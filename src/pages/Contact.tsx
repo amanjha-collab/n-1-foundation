@@ -31,6 +31,7 @@ import WaveDecoration from "@/components/WaveDecoration";
 import contactHero from "@/assets/contact-hero.jpg";
 import pinkRibbon from "@/assets/pink-ribbon.png";
 import vectorDecoration from "@/assets/Vector.svg";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -69,18 +70,22 @@ const Contact = () => {
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-0">
-                  <Button
-                    size="lg"
-                    className="rounded-lg bg-[#0066CC] hover:bg-[#0052A3] text-white px-8 py-3 text-base font-medium shadow-md"
-                  >
-                    Get Involved
-                  </Button>
-                  <Button
-                    size="lg"
-                    className="rounded-lg bg-[#00B894] hover:bg-[#00A080] text-white px-8 py-3 text-base font-medium shadow-md"
-                  >
-                    Explore Our Programs
-                  </Button>
+                  <Link to="/get-involved">
+                    <Button
+                      size="lg"
+                      className="rounded-lg bg-[#0066CC] hover:bg-[#0052A3] text-white px-8 py-3 text-base font-medium shadow-md"
+                    >
+                      Get Involved
+                    </Button>
+                  </Link>
+                  <Link to="/programs">
+                    <Button
+                      size="lg"
+                      className="rounded-lg bg-[#00B894] hover:bg-[#00A080] text-white px-8 py-3 text-base font-medium shadow-md"
+                    >
+                      Explore Our Programs
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -88,7 +93,7 @@ const Contact = () => {
         </section>
 
         {/* Contact Section */}
-        <section className="py-12 bg-[#FEFBF1]">
+        <section id="get-in-touch" className="py-12 bg-[#FEFBF1]">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div
               className="grid grid-cols-1
@@ -107,7 +112,7 @@ const Contact = () => {
                     </div>
                     <div className="font-poppins text-black">
                       <h3 className="text-gray-900 mb-1">Email</h3>
-                      <p className="font-semibold">info@Nplusone.Org.in</p>
+                      <p className="font-semibold">admin@readastory.org.in</p>
                     </div>
                   </div>
 
@@ -117,7 +122,7 @@ const Contact = () => {
                     </div>
                     <div className="font-poppins text-black">
                       <h3 className="text-gray-900 mb-1">Phone</h3>
-                      <p className="font-semibold">+91-123-456-7890</p>
+                      <p className="font-semibold">+91 70834 90865</p>
                     </div>
                   </div>
 
@@ -221,7 +226,7 @@ const Contact = () => {
                 Visit Us
               </h2>
               <p className="text-base xl:text-xl 2xl:text-2xl [min-width:1728px]:text-3xl text-[#494949] max-w-6xl mx-auto font-poppins font-medium">
-                We welcome visitors to our office. Please contact us in advance
+                We welcome visitors to Palghar. Please contact us in advance
                 to schedule an appointment and ensure someone is available to
                 meet with you.
               </p>
@@ -360,7 +365,7 @@ const Contact = () => {
               </div>
 
               <div className="max-w-full mx-auto">
-                {/* Single Accordion with All Questions */}
+                {/* Volunteering Tab */}
                 <TabsContent
                   value="volunteering"
                   className="bg-white rounded-3xl p-20 max-h-[500px] overflow-y-auto"
@@ -371,16 +376,14 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className="text-left  text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
                         How do I get involved?
                       </AccordionTrigger>
                       <AccordionContent className="text-[#6F6C8F] pb-4">
-                        Webflow stands out as the leading no-code platform by
-                        giving users complete creative control over their
-                        websites without relying on developers.
+                        Register on our website and save the Read-a-story WhatsApp number (+91 70834 90865) to receive updates. After your application is reviewed and you complete the orientation, you will be paired with a child and given access to downloadable teaching materials. You will then guide and support the student as they read a story over the phone, helping build their confidence and literacy skills.
                       </AccordionContent>
                     </AccordionItem>
                     <AccordionItem
@@ -388,7 +391,7 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className="text-left  text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
@@ -405,7 +408,7 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className="text-left  text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
@@ -422,7 +425,7 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className=" text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
@@ -438,7 +441,7 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className=" text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
@@ -454,6 +457,7 @@ const Contact = () => {
                   </Accordion>
                 </TabsContent>
 
+                {/* Time Commitment Tab */}
                 <TabsContent
                   value="commitment"
                   className="bg-white rounded-3xl p-20 max-h-[500px] overflow-y-auto"
@@ -464,9 +468,9 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className=" text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
-  2xl:text-xl  font-semibold hover:no-underline py-4"
+  2xl:text-xl font-semibold hover:no-underline py-4"
                       >
                         Are all times in the registration form IST times?
                       </AccordionTrigger>
@@ -480,9 +484,9 @@ const Contact = () => {
                       className="border-b border-gray-200"
                     >
                       <AccordionTrigger
-                        className=" text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
-  2xl:text-xl  font-semibold hover:no-underline py-4"
+  2xl:text-xl font-semibold hover:no-underline py-4"
                       >
                         What telephony vendors have worked well in the past for
                         international dialing?
@@ -493,9 +497,25 @@ const Contact = () => {
                         cost-effective solutions.
                       </AccordionContent>
                     </AccordionItem>
+                    <AccordionItem
+                      value="item-3"
+                      className="border-b border-gray-200"
+                    >
+                      <AccordionTrigger
+                        className="text-left text-black text-base
+  lg:text-lg
+  2xl:text-xl font-semibold hover:no-underline py-4"
+                      >
+                        What is the minimum time commitment required?
+                      </AccordionTrigger>
+                      <AccordionContent className="text-[#6F6C8F] pb-4">
+                        We ask volunteers to commit to at least one session per week for a minimum of 16 weeks to ensure consistent support for the children.
+                      </AccordionContent>
+                    </AccordionItem>
                   </Accordion>
                 </TabsContent>
 
+                {/* Call Format & Teaching Tab */}
                 <TabsContent
                   value="teaching"
                   className="bg-white rounded-3xl p-20 max-h-[500px] overflow-y-auto"
@@ -506,21 +526,47 @@ const Contact = () => {
                       className="border-b border-[#D3DEE2]"
                     >
                       <AccordionTrigger
-                        className="text-left text-black  text-base
+                        className="text-left text-black text-base
   lg:text-lg
   2xl:text-xl font-semibold hover:no-underline py-4"
                       >
                         How do I get started with teaching?
-                        <span className="ml-4">
-  
- 
-  </span>
                       </AccordionTrigger>
                       <AccordionContent className="text-[#6F6C8F] pb-4">
                         After signing up, you'll receive an orientation session
                         followed by training materials. We'll then match you
                         with students based on your availability and
                         preferences.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem
+                      value="item-2"
+                      className="border-b border-[#D3DEE2]"
+                    >
+                      <AccordionTrigger
+                        className="text-left text-black text-base
+  lg:text-lg
+  2xl:text-xl font-semibold hover:no-underline py-4"
+                      >
+                        What happens during the first call with a student?
+                      </AccordionTrigger>
+                      <AccordionContent className="text-[#6F6C8F] pb-4">
+                        The first call is an introduction session where you get to know the student, explain how the sessions will work, and begin with a simple story to assess their reading level.
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem
+                      value="item-3"
+                      className="border-b border-[#D3DEE2]"
+                    >
+                      <AccordionTrigger
+                        className="text-left text-black text-base
+  lg:text-lg
+  2xl:text-xl font-semibold hover:no-underline py-4"
+                      >
+                        How long does each reading session last?
+                      </AccordionTrigger>
+                      <AccordionContent className="text-[#6F6C8F] pb-4">
+                        Each session is typically 20–30 minutes long, conducted over a phone call. This is designed to be manageable for both volunteers and children.
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

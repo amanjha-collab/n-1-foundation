@@ -5,26 +5,26 @@ const ImpactSection = () => {
   const stats = [
     {
       icon: Users,
-      value: "2,800+",
+      value: "12,000+",
       label: "Children Engaged",
       color: "text-orange-500",
     },
     {
       icon: BookOpen,
-      value: "90+",
-      label: "Youth Participants",
+      value: "30+",
+      label: "Collaborations with Educational Institutions",
       color: "text-blue-500",
     },
     {
       icon: Clock,
-      value: "47,000+",
-      label: "Volunteer Hours",
+      value: "54,000+",
+      label: "Volunteer Hours to Date",
       color: "text-cyan-500",
     },
     {
       icon: TrendingUp,
-      value: "9,000+",
-      label: "Students Impacted",
+      value: "60",
+      label: "Youth Employed",
       color: "text-pink-500",
     },
   ];

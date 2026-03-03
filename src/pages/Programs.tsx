@@ -26,7 +26,8 @@ const Programs = () => {
     "Age-appropriate English storybooks and materials",
     "Interactive storytelling techniques to engage children",
     "Regular progress tracking and feedback",
-    "Certificate of contribution for volunteers"
+    "Certificate of contribution for volunteers",
+    "Comprehensive Baseline & Endline Assessments for every student"
   ];
 
   const solveWithBharatFeatures = [
@@ -133,13 +134,13 @@ const Programs = () => {
               <div className="mt-8">
                 <h3 className="text-3xl font-bold text-blue-600 mb-8">Why It Matters?</h3>
                 <ul className="space-y-4 mb-8">
-                  <li className="flex items-start">                 
+                  <li className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       Builds <span className="italic text-blue-600 font-medium">imagination</span>, <span className="italic text-blue-600 font-medium">vocabulary</span>, and <span className="italic text-blue-600 font-medium">confidence</span>
                     </span>
                   </li>
-                  <li className="flex items-start">                   
+                  <li className="flex items-start">
                       <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
                     <span className="text-lg text-gray-700">
                       Creates a <span className="italic text-blue-600 font-medium">joyful reading culture</span>
@@ -151,6 +152,12 @@ const Programs = () => {
                       Provides an <span className="italic text-blue-600 font-medium">opportunity</span> for a <span className="italic text-blue-600 font-medium">better future</span>
                     </span>
                   </li>
+                  <li className="flex items-start">
+                      <CheckCircle className="h-6 w-6 text-blue-600 mr-3 mt-0.5 flex-shrink-0" />
+                    <span className="text-lg text-gray-700">
+                      <span className="italic text-blue-600 font-medium">Comprehensive Baseline & Endline Assessments</span> for every student
+                    </span>
+                  </li>
                 </ul>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <a href="https://readastory.org.in/signup" target="_blank" rel="noopener noreferrer">
@@ -158,9 +165,6 @@ const Programs = () => {
                       Sign Up Now
                     </Button>
                   </a>
-                  <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-white px-8 rounded-lg">
-                    Access Reading Resources
-                  </Button>
                 </div>
               </div>
 
@@ -168,30 +172,30 @@ const Programs = () => {
               <div className="grid grid-cols-2 gap-6">
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
-                    <BookOpen className="h-10 w-10 text-blue-600 mx-auto mb-4" strokeWidth={2} />
-                    <div className="text-4xl font-bold text-gray-900 mb-2">1000+</div>
-                    <div className="text-sm text-gray-600">Reading Sessions</div>
+                    <Users className="h-10 w-10 text-orange-600 mx-auto mb-4" strokeWidth={2} />
+                    <div className="text-4xl font-bold text-gray-900 mb-2">3,000+</div>
+                    <div className="text-sm text-gray-600">Children Engaged</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
                     <MapPin className="h-10 w-10 text-green-600 mx-auto mb-4" strokeWidth={2} />
-                    <div className="text-4xl font-bold text-gray-900 mb-2">9,000+</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">50+</div>
                     <div className="text-sm text-gray-600">Schools Reached</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
                     <Clock className="h-10 w-10 text-cyan-600 mx-auto mb-4" strokeWidth={2} />
-                    <div className="text-4xl font-bold text-gray-900 mb-2">47,000+</div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">54,000+</div>
                     <div className="text-sm text-gray-600">Volunteer Hours</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
-                    <Users className="h-10 w-10 text-orange-600 mx-auto mb-4" strokeWidth={2} />
-                    <div className="text-4xl font-bold text-gray-900 mb-2">2,800+</div>
-                    <div className="text-sm text-gray-600">Children Engaged</div>
+                    <BookOpen className="h-10 w-10 text-blue-600 mx-auto mb-4" strokeWidth={2} />
+                    <div className="text-4xl font-bold text-gray-900 mb-2">12,000+</div>
+                    <div className="text-sm text-gray-600">Children Engaged (Overall)</div>
                   </CardContent>
                 </Card>
               </div>
@@ -201,7 +205,6 @@ const Programs = () => {
             <div className="bg-white w-[110%] -mx-[7%] py-16">
               <div className="text-center mb-8">
                 <h3 className="text-4xl font-bold mb-2 text-blue-600">Your Journey as a Reading Volunteer</h3>
-                <p className="text-gray-600">Your path to making an impact</p>
               </div>
               <Card className="shadow-2xl bg-white border-0 w-[70%] mx-[18%]">
                 <CardContent className="p-12">
@@ -295,10 +298,6 @@ const Programs = () => {
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </Button>
                   </a>
-                  <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-white">
-                    Access Reading Resources
-                    <BookOpen className="ml-2 h-5 w-5" />
-                  </Button>
                 </div>
               </div>
 
@@ -307,94 +306,42 @@ const Programs = () => {
                 <Card className="text-center shadow-lg bg-white">
                   <CardContent className="pt-2 pb-2">
                     <div className="p-4 rounded-full bg-blue-100 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                      <BookOpen className="h-8 w-8 text-blue-600" />
+                      <Calculator className="h-8 w-8 text-blue-600" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-2">1000+</div>
-                    <div className="text-sm text-muted-foreground">Reading Sessions</div>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">30M+</div>
+                    <div className="text-sm text-muted-foreground">Sums Solved (till 2026)</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white">
                   <CardContent className="pt-2 pb-2">
                     <div className="p-4 rounded-full bg-green-100 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                      <MapPin className="h-8 w-8 text-green-600" />
+                      <Users className="h-8 w-8 text-green-600" />
                     </div>
                     <div className="text-3xl font-bold text-gray-900 mb-2">9,000+</div>
-                    <div className="text-sm text-muted-foreground">Students Impacted</div>
+                    <div className="text-sm text-muted-foreground">Students Impacted (till 2026)</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white">
                   <CardContent className="pt-2 pb-2">
                     <div className="p-4 rounded-full bg-cyan-100 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                      <Clock className="h-8 w-8 text-cyan-600" />
+                      <MapPin className="h-8 w-8 text-cyan-600" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-2">47,000+</div>
-                    <div className="text-sm text-muted-foreground">Volunteer Hours</div>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">45+</div>
+                    <div className="text-sm text-muted-foreground">Schools</div>
                   </CardContent>
                 </Card>
                 <Card className="text-center shadow-lg bg-white">
                   <CardContent className="pt-2 pb-2">
                     <div className="p-4 rounded-full bg-orange-100 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
-                      <Users className="h-8 w-8 text-orange-600" />
+                      <Award className="h-8 w-8 text-orange-600" />
                     </div>
-                    <div className="text-3xl font-bold text-gray-900 mb-2">90+</div>
-                    <div className="text-sm text-muted-foreground">Participants</div>
+                    <div className="text-3xl font-bold text-gray-900 mb-2">60+</div>
+                    <div className="text-sm text-muted-foreground">Community Facilitators Engaged</div>
                   </CardContent>
                 </Card>
               </div>
             </div>
 
-            {/* Math Mentor Journey Section */}
-          <div className="bg-white py-16 w-[110%] -mx-[5%] border-y border-blue-50">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="text-center mb-8">
-                <h3 className="text-4xl font-bold mb-2 text-orange-500">Your Journey as a Math Mentor</h3>
-                <p className="text-gray-600">Your path to making an impact</p>
-              </div>
-              <Card className="shadow-2xl bg-gradient-to-br from-blue-50 to-gray-50 border-0 max-w-5xl mx-auto">
-                <CardContent className="p-12">
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-full border-4 border-blue-600 mx-auto mb-4 flex items-center justify-center bg-white">
-                        <FileText className="h-10 w-10 text-blue-600" strokeWidth={2} />
-                      </div>
-                      <div className="text-blue-600 font-bold text-lg mb-2">01 Sign Up</div>
-                      <p className="text-sm text-gray-600">Become part of a mission to strengthen foundational math skills in tribal schools.</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-full border-4 border-blue-600 mx-auto mb-4 flex items-center justify-center bg-white">
-                        <Presentation className="h-10 w-10 text-blue-600" strokeWidth={2} />
-                      </div>
-                      <div className="text-blue-600 font-bold text-lg mb-2">02 Orientation & Training</div>
-                      <p className="text-sm text-gray-600">Learn the practice-based model and digital/paper tools.</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-full border-4 border-blue-600 mx-auto mb-4 flex items-center justify-center bg-white">
-                        <Users className="h-10 w-10 text-blue-600" strokeWidth={2} />
-                      </div>
-                      <div className="text-blue-600 font-bold text-lg mb-2">03 Mentoring Sessions</div>
-                      <p className="text-sm text-gray-600">Guide students in solving real problems, ensuring conceptual clarity.</p>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-full border-4 border-blue-900 mx-auto mb-4 flex items-center justify-center bg-white">
-                        <MessageSquare className="h-10 w-10 text-blue-900" strokeWidth={2} />
-                      </div>
-                      <div className="text-blue-900 font-bold text-lg mb-2">04 Feedback Session</div>
-                      <p className="text-sm text-gray-600">Collaborate with facilitators to measure learning improvements.</p>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-24 h-24 rounded-full border-4 border-blue-900 mx-auto mb-4 flex items-center justify-center bg-white">
-                        <Award className="h-10 w-10 text-blue-900" strokeWidth={2} />
-                      </div>
-                      <div className="text-blue-900 font-bold text-lg mb-2">05 Certificate Of Contribution</div>
-                      <p className="text-sm text-gray-600">Celebrate your role in transforming learning outcomes in rural India.</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
           </div>
         </section>
 

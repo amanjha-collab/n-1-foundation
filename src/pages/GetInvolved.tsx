@@ -6,6 +6,14 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaveDecoration from "@/components/WaveDecoration";
@@ -18,7 +26,19 @@ import donateChildren from "@/assets/donate-children.jpg";
 import yellowVector from "@/assets/Vector1.png";
 import greenVector from "@/assets/Vector.png";
 const GetInvolved = () => {
+  const [showDonateDialog, setShowDonateDialog] = useState(false);
+
   return <div className="min-h-screen bg-background">
+    <Dialog open={showDonateDialog} onOpenChange={setShowDonateDialog}>
+      <DialogContent className="max-w-md">
+        <DialogHeader>
+          <DialogTitle className="text-2xl font-dm-serif text-[#FEB344]">Thank you for your willingness to give!</DialogTitle>
+          <DialogDescription className="text-base text-gray-700 mt-2">
+            Donation options will go live soon. Our 80G certification is currently in progress.
+          </DialogDescription>
+        </DialogHeader>
+      </DialogContent>
+    </Dialog>
     <Header />
     <main>
       {/* Hero Section */}
@@ -140,7 +160,7 @@ const GetInvolved = () => {
 
           {/* Sign up Button */}
           <div className="text-center max-w-6xl mx-14">
-            <a href="/https://readastory.org.in/signup" target="_blank" rel="noopener noreferrer">
+            <a href="https://readastory.org.in/signup" target="_blank" rel="noopener noreferrer">
               <Button className="bg-[#004AAD] hover:bg-blue-700 text-white px-10 py-6 text-md w-full font-poppins">
                 Sign up to Volunteer <ArrowRight className="ml-2 h-5 w-8 mt-1" />
               </Button>
@@ -150,23 +170,23 @@ const GetInvolved = () => {
       </section>
 
       {/* Donate Section */}
-      <section className="py-10 bg-[#FEFBF1]  ">
-        <div className="container  px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start ">
-          <div className="mb-12 flex flex-col gap-6">
+      <section className="py-10 bg-[#FEFBF1]">
+        <div className="container px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-stretch">
+          <div className="flex flex-col gap-6">
             <div>
-            <h2 className=" font-bold mb-4">
-              <span className="text-[#FEB344] text-4xl sm:text-5xl font-dm-serif">Donate  </span><span className="text-[#FEB344] text-2xl sm:text-3xl font-dm-serif">- </span> <span className="text-gray-900 font-dm-serif text-2xl sm:text-3xl italic tracking-wide">ways to support</span>
-            </h2>
-            <p className="text-lg text-gray-700 max-w-2xl">
-              Your contribution creates lasting impact. Every donation matters.
-            </p>
+              <h2 className="font-bold mb-4">
+                <span className="text-[#FEB344] text-4xl sm:text-5xl font-dm-serif">Donate  </span><span className="text-[#FEB344] text-2xl sm:text-3xl font-dm-serif">- </span> <span className="text-gray-900 font-dm-serif text-2xl sm:text-3xl italic tracking-wide">ways to support</span>
+              </h2>
+              <p className="text-lg text-gray-700 max-w-2xl">
+                Your contribution creates lasting impact. Every donation matters.
+              </p>
             </div>
-            <div className="rounded-2xl overflow-hidden mt-10">
+            <div className="rounded-2xl overflow-hidden flex-1 min-h-[300px]">
               <img src={donateChildren} alt="Children with books" className="w-full h-full object-cover" />
             </div>
           </div>
 
-          <div className=" mb-8">
+          <div className="flex flex-col mb-8">
 
             {/* Donation Cards - 2x2 Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -226,7 +246,7 @@ const GetInvolved = () => {
 
             {/* Donate Button */}
             <div className="text-center">
-              <Button size="lg" className="bg-[#004AAD] hover:bg-blue-700 text-white px-12 py-6 text-lg rounded-lg w-full">
+              <Button size="lg" className="bg-[#004AAD] hover:bg-blue-700 text-white px-12 py-6 text-lg rounded-lg w-full" onClick={() => setShowDonateDialog(true)}>
                 Donate Now <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </div>
@@ -266,7 +286,7 @@ const GetInvolved = () => {
                   <li>• Communication Associates</li>
                   <li>• Research Coordinators</li>
                 </ul>
-                <Link to="/contact">
+                <Link to="/contact#get-in-touch">
                   <Button className="w-full bg-[#8338EC] hover:bg-purple-700 text-white">
                     View Open Positions
                   </Button>
