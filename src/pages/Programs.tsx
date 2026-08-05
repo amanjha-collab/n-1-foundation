@@ -163,7 +163,7 @@ const Programs = () => {
               </div>
 
               {/* Impact Stats Section */}
-              <div className="grid grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 gap-6">
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
                     <BookOpen className="h-10 w-10 text-blue-600 mx-auto mb-4" strokeWidth={2} />
