@@ -210,9 +210,14 @@ const Resources = () => {
                   <CardDescription className="mb-6 text-gray-600 flex-1">
                     Download the latest valid 80-G certificate for your donation records and tax benefit documentation.
                   </CardDescription>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-auto">
-                    <Download className="h-4 w-4 mr-2" />
-                    Download Certificate
+                  <Button asChild className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-auto">
+                    <a
+                      href="/documents/n1-social-foundation-80G-certificate.pdf"
+                      download="n1-social-foundation-80G-certificate.pdf"
+                    >
+                      <Download className="h-4 w-4 mr-2" />
+                      Download Certificate
+                    </a>
                   </Button>
                 </CardContent>
               </Card>
