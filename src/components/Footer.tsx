@@ -8,11 +8,10 @@ const Footer = () => {
     { name: "Programs", href: "/programs" },
     { name: "Get Involved", href: "/get-involved" },
     { name: "Resources", href: "/resources" },
-    { name: "FAQ", href: "/faq" },
   ];
 
   const programs = [
-    { name: "Read-a-Story", href: "/programs" },
+    { name: "Read-a-story", href: "/programs" },
     { name: "Solve-With-Bharat", href: "/programs" },
   ];
 
@@ -82,11 +81,11 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-white/90 flex-shrink-0 mt-0.5" />
-                <span className="text-white/90 text-sm">+91-XXXXXXXXXX</span>
+                <span className="text-white/90 text-sm">+91 70834 90865</span>
               </div>
               <div className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-white/90 flex-shrink-0 mt-0.5" />
-                <span className="text-white/90 text-sm">Pune, Maharashtra, India</span>
+                <span className="text-white/90 text-sm">"TORAN" Building, Flat No.102, Plot No.15, CTS No.1336, Sr.No.132/2+3, Gulmohar Park, Aundh, PUNE: 411007</span>
               </div>
             </div>
             
@@ -128,6 +127,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
             <p className="text-white/80 text-sm">
               © 2025 n+1 Social Foundation. All rights reserved.
+            </p>
+            <p className="text-white/80 text-sm">
+              CIN : U80904PN2021NPL200117
             </p>
             <p className="text-white/80 text-sm">
               Powered by Aiden AI — Designed to drive impact.

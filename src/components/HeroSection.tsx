@@ -7,10 +7,10 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[84vh] flex items-center lg:items-end overflow-hidden">
       {/* Background Image */}
-      <div className="absolute -top-[80px] z-0">
-        <img 
-          src={heroImage} 
-          alt="Students learning together" 
+      <div className="absolute inset-0 z-0">
+        <img
+          src={heroImage}
+          alt="Students learning together"
           className="w-full h-full object-cover"
         />
       </div>
@@ -24,7 +24,7 @@ const HeroSection = () => {
       
       
       {/* Content */}
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mb-40">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20 mb-16 lg:mb-40">
         <div className="max-w-5xl mx-auto text-center space-y-8">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-white animate-fade-in">
             One <span className="italic">Story</span>. One <span className="italic">Idea</span>. One <span className="italic">Action</span>.
@@ -37,12 +37,12 @@ const HeroSection = () => {
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6">
             <Link to="/get-involved">
-              <Button size="lg" className="bg-[#004AAD] text-white hover:bg-[#696969] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#3A86FF] hover:border-white">
+              <Button size="lg" className="bg-[#004AAD] text-white hover:bg-[#003d91] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#3A86FF] hover:border-white">
                 Get Involved
               </Button>
             </Link>
             <Link to="/programs">
-              <Button size="lg" className="bg-[#00AD9B] text-white hover:bg-[#696969] shadow-xl text-sm px-6 py-4 rounded-lg font-medium  border-2 border-[#82FF9E] hover:border-white">
+              <Button size="lg" className="bg-[#00AD9B] text-white hover:bg-[#008f7e] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#82FF9E] hover:border-white">
                 Explore Our Programs
               </Button>
             </Link>

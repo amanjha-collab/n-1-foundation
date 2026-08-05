@@ -67,12 +67,12 @@ const GetInvolved = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <a href="https://www.readastory.org.in/signup" target="_blank" rel="noopener noreferrer">
-                 <Button size="lg" className="bg-[#004AAD] text-white hover:bg-[#696969] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#3A86FF] hover:border-white">
+                 <Button size="lg" className="bg-[#004AAD] text-white hover:bg-[#003d91] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#3A86FF] hover:border-white">
                   Get Involved
                 </Button>
               </a>
               <Link to="/programs">
-                <Button size="lg" className="bg-[#00AD9B] text-white hover:bg-[#696969] shadow-xl text-sm px-6 py-4 rounded-lg font-medium  border-2 border-[#82FF9E] hover:border-white">
+                <Button size="lg" className="bg-[#00AD9B] text-white hover:bg-[#008f7e] shadow-xl text-sm px-6 py-4 rounded-lg font-medium border-2 border-[#82FF9E] hover:border-white">
                   Explore Our Programs
                 </Button>
               </Link>
@@ -100,7 +100,7 @@ const GetInvolved = () => {
                 <div className="flex items-start gap-2">
                   <span className="mt-1.5 h-2 w-2 rounded-full bg-[#004AAD]" />
                   <CardTitle className="text-[#004AAD] text-base font-semibold tracking-tight leading-snug whitespace-nowrap">
-                    Reading Sessions For Read-A-Story
+                    Reading Sessions For Read-a-story
                   </CardTitle>
                 </div>
               </CardHeader>
@@ -275,17 +275,15 @@ const GetInvolved = () => {
             <Card className="bg-white hover:shadow-xl transition-all duration-300">
               <CardHeader>
                 <Briefcase className="h-8 w-8 text-purple-600" />
-                <CardTitle className="text-2xl text-gray-900 mt-3">Career</CardTitle>
-                <CardDescription className="text-gray-600 text-base mt-6">
-                  Join Our Dynamic Team At The Intersection Of Education And Social Innovation.
-                </CardDescription>
+                <CardTitle className="text-2xl text-gray-900 mt-3">Careers</CardTitle>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 mb-6 text-gray-700 font-bold">
-                  <li>• Program Managers</li>
-                  <li>• Communication Associates</li>
-                  <li>• Research Coordinators</li>
-                </ul>
+                <p className="text-gray-600 text-base mb-4">
+                  Join us at the intersection of education and social impact. Be part of a mission-driven team working to make learning accessible for all.
+                </p>
+                <p className="text-gray-600 text-base mb-6">
+                  We welcome individuals who are passionate about creating meaningful change through collaboration, innovation, and community engagement.
+                </p>
                 <Link to="/contact#get-in-touch">
                   <Button className="w-full bg-[#8338EC] hover:bg-purple-700 text-white">
                     View Open Positions
@@ -297,20 +295,16 @@ const GetInvolved = () => {
             {/* Internships Card */}
             <Card className="bg-white hover:shadow-xl transition-all duration-300">
               <CardHeader>
-                
-                  <GraduationCap className="h-8 w-8 text-purple-600" />
-               
+                <GraduationCap className="h-8 w-8 text-purple-600" />
                 <CardTitle className="text-2xl text-gray-900">Internships</CardTitle>
-                <CardDescription className="text-gray-600 text-base">
-                  Gain Hands-On Exposure, Mentorship, And Certification In Social Impact Work.
-                </CardDescription>
               </CardHeader>
               <CardContent>
-                <ul className="space-y-2 mb-6 text-gray-700 font-bold">
-                  <li>• Program Support</li>
-                  <li>• Content Development</li>
-                  <li>• Research & Analysis</li>
-                </ul>
+                <p className="text-gray-600 text-base mb-4">
+                  Gain hands-on experience in the social impact space through mentorship, real-world exposure, and learning opportunities.
+                </p>
+                <p className="text-gray-600 text-base mb-6">
+                  Work alongside a purpose-driven team and contribute to initiatives that make a difference.
+                </p>
                 <Link to="/contact">
                   <Button className="w-full bg-[#8338EC] hover:bg-purple-700 text-white">
                     Apply for Internships

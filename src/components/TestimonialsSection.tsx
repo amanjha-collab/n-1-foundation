@@ -6,7 +6,7 @@ const TestimonialsSection = () => {
     {
       name: "Priya Sharma",
       role: "Volunteer",
-      content: "Working with Read-a-Story has been incredibly fulfilling. Seeing children's faces light up when they understand a story is priceless.",
+      content: "Working with Read-a-story has been incredibly fulfilling. Seeing children's faces light up when they understand a story is priceless.",
       rating: 5
     },
     {

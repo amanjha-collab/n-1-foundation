@@ -9,10 +9,10 @@ const ProgramsSection = () => {
   const programs = [
     {
       icon: BookOpen,
-      title: "Read-a-Story",
-      description: "A volunteer-driven literacy initiative bringing books and imagination to marginalized children.",
+      title: "Read-a-story",
+      description: "A volunteer-driven literacy initiative that brings books and imagination to children from underserved communities.",
       image: readStoryImg,
-      stats: "2,800+ children engaged",
+      stats: "3,000+ children engaged",
       color: "primary",
       borderColor: "border-primary"
     },

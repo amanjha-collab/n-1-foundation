@@ -113,7 +113,7 @@ const Programs = () => {
 
         </section>
 
-        {/* Read-a-Story Program */}
+        {/* Read-a-story Program */}
         <section id="read-a-story" className="py-20 bg-amber-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             {/* Header Section */}
@@ -123,7 +123,7 @@ const Programs = () => {
                   <BookOpen className="h-12 w-12 text-orange-500" strokeWidth={2.5} />
                 </div>
               </div>
-              <h2 className="text-4xl font-display font-bold mb-4 text-yellow-500">Read-a-Story</h2>
+              <h2 className="text-4xl font-display font-bold mb-4 text-yellow-500">Read-a-story</h2>
               <p className="text-lg text-gray-700 leading-relaxed">
                 A volunteer-driven literacy initiative bringing<br />books and imagination to marginalized children
               </p>
@@ -169,7 +169,7 @@ const Programs = () => {
               </div>
 
               {/* Impact Stats Section */}
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-3 gap-6">
                 <Card className="text-center shadow-lg bg-white rounded-xl border-0">
                   <CardContent className="pt-2 pb-2">
                     <Users className="h-10 w-10 text-orange-600 mx-auto mb-4" strokeWidth={2} />
@@ -189,13 +189,6 @@ const Programs = () => {
                     <Clock className="h-10 w-10 text-cyan-600 mx-auto mb-4" strokeWidth={2} />
                     <div className="text-4xl font-bold text-gray-900 mb-2">54,000+</div>
                     <div className="text-sm text-gray-600">Volunteer Hours</div>
-                  </CardContent>
-                </Card>
-                <Card className="text-center shadow-lg bg-white rounded-xl border-0">
-                  <CardContent className="pt-2 pb-2">
-                    <BookOpen className="h-10 w-10 text-blue-600 mx-auto mb-4" strokeWidth={2} />
-                    <div className="text-4xl font-bold text-gray-900 mb-2">12,000+</div>
-                    <div className="text-sm text-gray-600">Children Engaged (Overall)</div>
                   </CardContent>
                 </Card>
               </div>
@@ -291,14 +284,6 @@ const Programs = () => {
                     <span className="text-lg">Rigorous Monitoring & Evaluation from IIT Bombay</span>
                   </li>
                 </ul>
-                <div className="flex flex-col gap-4">
-                  <a href="https://readastory.org.in/signup" target="_blank" rel="noopener noreferrer">
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white">
-                      Sign Up Now
-                      <ArrowRight className="ml-2 h-5 w-5" />
-                    </Button>
-                  </a>
-                </div>
               </div>
 
               {/* Impact Stats */}

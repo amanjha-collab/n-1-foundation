@@ -1,25 +1,16 @@
-import dividerImage from "@/assets/divider.png";
-import upperDividerImage from "@/assets/upper-divider.png";
-
 interface WaveDecorationProps {
   position?: "top" | "bottom";
 }
 
 const WaveDecoration = ({ position = "bottom" }: WaveDecorationProps) => {
-  const imageSrc = position === "bottom" ? dividerImage : upperDividerImage;
   const waveClass = position === "top" ? "top-0 scale-y-[-1]" : "bottom-0";
 
   return (
     <div
       className={`absolute ${waveClass} left-0 right-0 w-full overflow-hidden leading-[0] z-[2]`}
     >
-      {/* <img 
-        src={imageSrc}
-        alt="" 
-        className="relative block w-full h-auto" 
-      /> */}
-      <svg viewBox="0 0 1512 85" fill="none" xmlns="http://www.w3.org/2000/svg ">
-        <g clip-path="url(#clip0_12359_2583)">
+      <svg viewBox="0 0 1512 85" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clipPath="url(#clip0_12359_2583)">
           <path
             opacity="0.593"
             d="M0 9.93703C0 -27.9194 374.701 54.5853 752.701 54.5853C1130.7 54.5853 1512 -21.8065 1512 9.93703V84.9999H0C0 84.9999 0 47.7934 0 9.93703Z"

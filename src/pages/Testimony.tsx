@@ -1,4 +1,6 @@
 import { Star, Quote, Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
@@ -11,9 +13,9 @@ const Testimony = () => {
   const testimonies = [
     {
       name: "Priya Sharma",
-      role: "Volunteer, Read-a-Story Program",
+      role: "Volunteer, Read-a-story Program",
       location: "Mumbai, Maharashtra",
-      content: "Working with Aiden's Read-a-Story program has been incredibly fulfilling. Seeing the children's faces light up when they understand a story is priceless. The training provided was excellent, and the support from the team makes volunteering a joy.",
+      content: "Working with Aiden's Read-a-story program has been incredibly fulfilling. Seeing the children's faces light up when they understand a story is priceless. The training provided was excellent, and the support from the team makes volunteering a joy.",
       rating: 5
     },
     {
@@ -34,7 +36,7 @@ const Testimony = () => {
       name: "Ankit Verma",
       role: "School Principal",
       location: "Delhi",
-      content: "Aiden's programs have made a significant impact in our school. The read-a-story sessions have improved English comprehension among our students, and the math program has helped bridge learning gaps. The volunteers are well-trained and passionate about education.",
+      content: "Aiden's programs have made a significant impact in our school. The Read-a-story sessions have improved English comprehension among our students, and the math program has helped bridge learning gaps. The volunteers are well-trained and passionate about education.",
       rating: 5
     },
     {
@@ -83,8 +85,8 @@ const Testimony = () => {
           {/* Content */}
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-4xl mx-auto text-center space-y-8">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight text-white animate-fade-in">
-                One <span className="italic font-serif">Voice</span>. One <span className="italic font-serif">Impact</span>. One <span className="italic font-serif">Community</span>.
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-white animate-fade-in">
+                One <span className="italic font-dm-serif">Voice</span>. One <span className="italic font-dm-serif">Impact</span>. One <span className="italic font-dm-serif">Community</span>.
               </h1>
               
               <p className="text-lg sm:text-xl lg:text-2xl text-white leading-relaxed max-w-3xl mx-auto">
@@ -159,12 +161,16 @@ const Testimony = () => {
                 Join thousands of volunteers, parents, and educators who are making a difference in children's lives. Your story could be the next one we feature.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="px-8 py-3 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors">
-                  Get Involved Today
-                </button>
-                <button className="px-8 py-3 border-2 border-primary text-primary rounded-md hover:bg-primary hover:text-white transition-colors">
-                  Share Your Story
-                </button>
+                <Link to="/get-involved">
+                  <Button className="px-8 py-3 bg-[#004AAD] text-white hover:bg-[#003d91] transition-colors duration-200">
+                    Get Involved Today
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" className="px-8 py-3 border-2 border-[#004AAD] text-[#004AAD] hover:bg-[#004AAD] hover:text-white transition-colors duration-200">
+                    Share Your Story
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

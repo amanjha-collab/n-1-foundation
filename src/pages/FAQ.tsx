@@ -226,7 +226,7 @@ const FAQ = () => {
                   <AccordionItem value="call-8">
                     <AccordionTrigger>What do I do if I need to pause or discontinue in the middle of a trial?</AccordionTrigger>
                     <AccordionContent>
-                      <p>Please contact the Help Desk: +91-7083490865 (call or WhatsApp) Or email: admin@readastory.org.in</p>
+                      <p>Please contact the Help Desk: +91-7083490865 (call or WhatsApp) Or email: info@nplusone.org.in</p>
                       <p className="mt-2"><strong>Hours (IST) of the help desk:</strong></p>
                       <div className="mt-2 space-y-1">
                         <p><strong>Mon-Fri:</strong> 7:00-9:00 AM, 7:30-8:30 PM</p>
@@ -250,7 +250,7 @@ const FAQ = () => {
               <CardContent className="space-y-6">
                 
                 <div>
-                  <h3 className="text-lg font-semibold mb-3 text-primary">Profile of a Read-a-Story Student</h3>
+                  <h3 className="text-lg font-semibold mb-3 text-primary">Profile of a Read-a-story Student</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     The majority of our students come from Zilla Parishad schools in remote Maharashtra areas. These schools often have 400+ students but only 4-5 teachers. Students are young and may not fully understand education's significance, with parents unaware of educational opportunities. With your help, these students can access otherwise unreachable opportunities.
                   </p>
@@ -330,7 +330,7 @@ const FAQ = () => {
                     <span>+91-7083490865</span>
                   </div>
                   <div className="flex items-center justify-center">
-                    <span>admin@readastory.org.in</span>
+                    <span>info@nplusone.org.in</span>
                   </div>
                 </div>
               </CardContent>

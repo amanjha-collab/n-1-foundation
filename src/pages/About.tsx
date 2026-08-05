@@ -129,7 +129,7 @@ const About = () => {
                 multiply into transformative change.
               </p>
               <p className="text-2xl text-[#494949] font-sarabun font-medium mt-1">
-                Through our flagship programs Read-a-Story and
+                Through our flagship programs Read-a-story and
                 Solve-with-Bharat, we empower children to learn joyfully and
                 youth to be actively involved, ensuring that education and
                 community-led action become powerful engines of nation-building.
@@ -411,24 +411,13 @@ const About = () => {
                marker:content-['✓']  marker:font-medium"
                 >
                   <li className="flex items-start [display:list-item]">
-                    {/* <span className="mr-3 mt-1 flex-shrink-0">✓</span> */}
-                    <span className="pl-2  text-xs xl:text-[13px] 2xl:text-sm font-medium">
-                      Recognized By State Education Boards For Literacy
-                      Promotion
-                    </span>
-                  </li>
-                  <li className="flex items-start [display:list-item]">
-                    {/* <span className="mr-3 mt-1 flex-shrink-0">✓</span> */}
                     <span className="pl-2 text-xs xl:text-[13px] 2xl:text-sm font-medium">
-                      Featured At CSR Forums For Innovative Volunteer-Driven
-                      Models
+                      Featured at CSR forums for innovative volunteer and technology-driven models
                     </span>
                   </li>
                   <li className="flex items-start [display:list-item]">
-                    {/* <span className="mr-3 mt-1 flex-shrink-0">✓</span> */}
                     <span className="pl-2  text-xs xl:text-[13px] 2xl:text-sm font-medium">
-                      Community Appreciation Awards From Schools And Local
-                      Bodies
+                      Appreciated by schools and local community bodies
                     </span>
                   </li>
                 </ul>

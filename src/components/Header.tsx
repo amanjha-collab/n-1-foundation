@@ -20,7 +20,7 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="sticky top-0 z-50 bg-white  border-b border-border z-[99]">
+    <header className="sticky top-0 bg-white border-b border-border z-[99]">
       <nav className="container mx-auto px-4 sm:px-6 2xl:px-[48px] py-3">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -38,9 +38,9 @@ const Header = () => {
               <Link
                 key={item.name}
                 to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-[#FEB344] ${
-                  isActive(item.href) 
-                    ? "text-[#FEB344] border-b-2 border-[#FEB344]" 
+                className={`text-sm font-medium transition-colors duration-200 hover:text-[#FEB344] ${
+                  isActive(item.href)
+                    ? "text-[#FEB344] border-b-2 border-[#FEB344]"
                     : "text-[#004AAD]"
                 }`}
               >
@@ -72,7 +72,7 @@ const Header = () => {
                   key={item.name}
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`text-sm font-medium transition-colors hover:text-primary ${
+                  className={`text-sm font-medium transition-colors duration-200 hover:text-primary ${
                     isActive(item.href) ? "text-primary" : "text-[#004AAD]"
                   }`}
                 >

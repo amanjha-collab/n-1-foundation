@@ -112,7 +112,7 @@ const Contact = () => {
                     </div>
                     <div className="font-poppins text-black">
                       <h3 className="text-gray-900 mb-1">Email</h3>
-                      <p className="font-semibold">admin@readastory.org.in</p>
+                      <p className="font-semibold">info@nplusone.org.in</p>
                     </div>
                   </div>
 
@@ -132,7 +132,7 @@ const Contact = () => {
                     </div>
                     <div className="font-poppins text-black">
                       <h3 className="mb-1">Address</h3>
-                      <p className="font-semibold">Pune, Maharashtra, India</p>
+                      <p className="font-semibold">"TORAN" Building, Flat No.102, Plot No.15, CTS No.1336, Sr.No.132/2+3, Gulmohar Park, Aundh, PUNE: 411007</p>
                     </div>
                   </div>
                 </div>
@@ -235,7 +235,7 @@ const Contact = () => {
             {/* Map Placeholder */}
             <div className="rounded-2xl overflow-hidden shadow-lg max-w-6xl mx-auto">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d241317.1160989077!2d72.71637332542264!3d19.082502005891443!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c6306644edc1%3A0x5da4ed8f8d648c69!2sMumbai%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120298.75979522675!2d72.68873835!3d19.696295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71cc41ab2e413%3A0x5765ec6c23b1de68!2sPalghar%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1699000000000!5m2!1sen!2sin"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

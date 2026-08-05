@@ -87,7 +87,7 @@ const CommunityImpactSection = () => {
               >
                 <div className="flex items-center flex-col  justify-center">
                   <div className={`mb-4 ${stat.color}`}>
-                    <stat.icon className="h-34 w-34" />
+                    <stat.icon className="h-10 w-10" />
                   </div>
                   <div className="font-poppins  text-center">
                     <div className="text-[32px] font-semibold text-foreground mb-2">

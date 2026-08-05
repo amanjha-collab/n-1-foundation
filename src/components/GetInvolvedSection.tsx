@@ -13,7 +13,7 @@ const GetInvolvedSection = () => {
         <div className="text-center  max-w-5xl mx-auto">
           <div className="flex justify-center">
             <div>
-              <Heart className="h-[80px] w-[80px] text-white" />
+              <Heart className="h-16 w-16 sm:h-20 sm:w-20 text-white" />
             </div>
           </div>
           
