@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WaveDecoration from "@/components/WaveDecoration";
@@ -14,7 +16,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import rahulImg from "@/assets/team/Rahul.jpg";
+import rahulImg from "@/assets/team/rahul.jpg";
 import amodImg from "@/assets/team/Amod.png";
 import gauriImg from "@/assets/team/Gauri.png";
 import aboutHero from "@/assets/about-hero.png";
@@ -74,6 +76,11 @@ const About = () => {
       image: gauriImg,
       initials: "GM",
     },
+    {
+      name: "Saarang Rajguru",
+      image: null,
+      initials: "SR",
+    },
   
     ];
   return (
@@ -110,6 +117,19 @@ const About = () => {
                 to transforming lives through literacy, innovation, and
                 community-led change
               </p>
+
+              <div className="flex flex-col sm:flex-row justify-center gap-4">
+                <Link to="/get-involved">
+                  <Button size="lg" className="bg-[#004AAD] hover:bg-[#003a8c] text-white px-8 rounded-lg">
+                    Get Involved
+                  </Button>
+                </Link>
+                <Link to="/programs">
+                  <Button size="lg" className="bg-teal-500 hover:bg-teal-600 text-white px-8 rounded-lg">
+                    Explore Our Programs
+                  </Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>
@@ -224,8 +244,8 @@ const About = () => {
             <div
               className="grid  grid-cols-1 
   sm:grid-cols-2 
-  lg:grid-cols-3 
-  2xl:grid-cols-3 gap-12 max-w-5xl mx-auto"
+  lg:grid-cols-4 
+  2xl:grid-cols-4 gap-8 max-w-6xl mx-auto"
             >
               {teamMembers.map((member, index) => {
                 // Alternate gradient colors: blue and orange
@@ -236,16 +256,22 @@ const About = () => {
                 return (
                   <div key={index} className="group">
                     <div className="relative rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 aspect-[3/4]">
-                      <img
-                        src={member.image}
-                        alt={member.name}
-                        className="w-full h-full object-cover grayscale"
-                      />
+                      {member.image ? (
+                        <img
+                          src={member.image}
+                          alt={member.name}
+                          className="w-full h-full object-cover grayscale"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                          <span className="text-4xl font-semibold text-gray-500">{member.initials}</span>
+                        </div>
+                      )}
                       {/* Gradient overlay at bottom */}
                       <div
                         className={`absolute bottom-0 left-0 right-0 bg-gradient-to-t ${gradientColor} pt-12 pb-4 px-4`}
                       >
-                        <h3 className="text-white font-semibold text-center text-[clamp(24px,1.7vw,28px)]">
+                        <h3 className="text-white font-semibold text-center text-[clamp(20px,1.4vw,28px)]">
                           {member.name}
                         </h3>
                       </div>
