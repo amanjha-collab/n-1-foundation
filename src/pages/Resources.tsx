@@ -185,6 +185,41 @@ const Resources = () => {
           </div>
         </section>
 
+        {/* Documents */}
+        <section className="py-20 bg-orange-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl font-dm-serif font-normal mb-4 text-yellow-500">Documents</h2>
+              <p className="text-lg text-gray-700 max-w-3xl mx-auto">
+                Access and download our valid <span className="text-blue-600 font-medium">80-G certificate</span> to support tax exemption claims for eligible donations
+              </p>
+            </div>
+
+            <div className="max-w-sm mx-auto">
+              <Card className="bg-white shadow-lg rounded-2xl hover:shadow-xl transition-all duration-300 relative flex flex-col">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <FileText className="h-10 w-10 text-orange-500" />
+                    <span className="bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                      NEW
+                    </span>
+                  </div>
+                  <CardTitle className="text-2xl text-gray-900 mb-2">80-G Certificate</CardTitle>
+                </CardHeader>
+                <CardContent className="flex flex-col flex-1">
+                  <CardDescription className="mb-6 text-gray-600 flex-1">
+                    Download the latest valid 80-G certificate for your donation records and tax benefit documentation.
+                  </CardDescription>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white mt-auto">
+                    <Download className="h-4 w-4 mr-2" />
+                    Download Certificate
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
         {/* Legal & Financial Transparency */}
         <section className="relative py-20 bg-[#3A86FF] overflow-hidden">
           <WaveDecoration position="top" />
