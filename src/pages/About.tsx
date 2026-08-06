@@ -19,6 +19,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import rahulImg from "@/assets/team/rahul.jpg";
 import amodImg from "@/assets/team/Amod.png";
 import gauriImg from "@/assets/team/Gauri.png";
+import saarangImg from "@/assets/team/Saarang.png";
 import aboutHero from "@/assets/about-hero.png";
 import butterflyLifecycle from "@/assets/butterfly-lifecycle.png";
 import logo from "@/assets/logo-short.png";
@@ -78,7 +79,7 @@ const About = () => {
     },
     {
       name: "Saarang Rajguru",
-      image: null,
+      image: saarangImg,
       initials: "SR",
     },
   
