@@ -3,6 +3,13 @@
   "name": "n-1-foundation",
   "compatibility_date": "2026-08-06",
 
+  // The Cloudflare build runs only an install step and then the deploy
+  // command; it never runs `npm run build`. Since dist/ is gitignored it does
+  // not exist at deploy time, so wrangler must produce it itself.
+  "build": {
+    "command": "npm run build"
+  },
+
   // This project is a static Vite SPA with no Worker script, so there is no
   // "main" entrypoint. Declaring "assets" explicitly stops `wrangler deploy`
   // from falling back to framework auto-detection, which requires Vite >= 6.
