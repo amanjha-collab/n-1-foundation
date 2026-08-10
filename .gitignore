@@ -1,9 +1,0 @@
-node_modules/
-dist/
-build/
-.env
-
-# This project standardizes on npm (package-lock.json). A committed bun
-# lockfile makes CI switch to `bun install --frozen-lockfile` and drift.
-bun.lockb
-bun.lock
