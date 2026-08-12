@@ -1,6 +1,15 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
   RewriteBase /
+
+  # Force https + www (non-www -> www, and http -> https)
+  RewriteCond %{HTTP_HOST} ^nplusone\.org\.in [NC]
+  RewriteRule ^(.*)$ https://www.nplusone.org.in/$1 [L,R=301]
+
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://www.nplusone.org.in/$1 [L,R=301]
+
+  # SPA fallback - let React Router handle all other routes
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
