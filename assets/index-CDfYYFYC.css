@@ -18,3 +18,34 @@
 
   a{transition:color .25s ease}
 }
+
+/* ---- Added: hero banner gradient-shift on hover + playful ambient bokeh (CSS-only, zero image/JS cost) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  section[class*="min-h-[84vh]"],section[class*="min-h-[85vh]"],section[class*="min-h-[90vh]"]{isolation:isolate}
+
+  section[class*="min-h-[84vh]"]::after,section[class*="min-h-[85vh]"]::after,section[class*="min-h-[90vh]"]::after{
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+    background:linear-gradient(135deg,rgba(0,74,173,.32) 0%,rgba(0,173,155,.22) 45%,rgba(254,179,68,.28) 100%);
+    background-size:200% 200%;background-position:0% 50%;
+    opacity:0;mix-blend-mode:multiply;
+    transition:opacity .6s ease,background-position 1.6s cubic-bezier(.16,.84,.44,1);
+  }
+  section[class*="min-h-[84vh]"]:hover::after,section[class*="min-h-[85vh]"]:hover::after,section[class*="min-h-[90vh]"]:hover::after{
+    opacity:1;background-position:100% 50%;
+  }
+
+  section[class*="min-h-[84vh]"]::before,section[class*="min-h-[85vh]"]::before,section[class*="min-h-[90vh]"]::before{
+    content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.55;
+    background-image:radial-gradient(circle at 12% 20%,rgba(255,255,255,.55) 0 3px,transparent 4px),
+      radial-gradient(circle at 80% 15%,rgba(254,179,68,.6) 0 4px,transparent 5px),
+      radial-gradient(circle at 55% 75%,rgba(255,255,255,.4) 0 3px,transparent 4px),
+      radial-gradient(circle at 30% 85%,rgba(0,173,155,.5) 0 3px,transparent 4px),
+      radial-gradient(circle at 92% 60%,rgba(255,255,255,.45) 0 2px,transparent 3px);
+    animation:heroBokeh 14s ease-in-out infinite;
+  }
+}
+@keyframes heroBokeh{
+  0%{transform:translate(0,0)}
+  50%{transform:translate(-10px,12px)}
+  100%{transform:translate(0,0)}
+}
