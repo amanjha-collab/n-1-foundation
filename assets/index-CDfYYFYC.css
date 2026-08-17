@@ -49,3 +49,75 @@
   50%{transform:translate(-10px,12px)}
   100%{transform:translate(0,0)}
 }
+
+/* ---- Gallery carousel (Moments That Matter) ---- */
+.gallery-viewport{position:relative;width:100%}
+.gallery-frame{overflow:hidden;border-radius:1rem;box-shadow:0 20px 25px -5px rgba(0,0,0,.12),0 8px 10px -6px rgba(0,0,0,.1);aspect-ratio:16/8;background:#f3f4f6}
+.gallery-track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.gallery-slide{width:100%;height:100%;flex-shrink:0}
+.gallery-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.92);color:#004AAD;border-radius:9999px;padding:10px;box-shadow:0 4px 14px rgba(0,0,0,.18);transition:all .2s ease;cursor:pointer;border:none;display:flex;align-items:center;justify-content:center}
+.gallery-arrow:hover{background:#fff;transform:translateY(-50%) scale(1.1)}
+.gallery-arrow-left{left:10px}
+.gallery-arrow-right{right:10px}
+.gallery-dots{display:flex;justify-content:center;gap:8px;margin-top:10px}
+.gallery-dot{height:10px;width:10px;border-radius:9999px;background:#d1d5db;border:none;cursor:pointer;transition:all .3s ease;padding:0}
+.gallery-dot.is-active{width:28px;background:#004AAD}
+.gallery-dot:hover{background:#9ca3af}
+@media (min-width:640px){
+  .gallery-arrow-left{left:18px}
+  .gallery-arrow-right{right:18px}
+  .gallery-arrow{padding:13px}
+}
+
+/* ---- Hero background carousel (Home page) ---- */
+.hero-carousel-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;opacity:0;transition:opacity 1.6s ease-in-out}
+.hero-carousel-img.is-active{opacity:1}
+.hero-dots{position:absolute;bottom:26px;left:0;right:0;z-index:3;display:flex;justify-content:center;gap:8px}
+.hero-dot{height:8px;width:8px;border-radius:9999px;background:rgba(255,255,255,.5);border:none;cursor:pointer;transition:all .3s ease;padding:0}
+.hero-dot.is-active{width:26px;background:#fff}
+.hero-dot:hover{background:rgba(255,255,255,.85)}
+
+/* ---- Moments unified frame (image + stats combined in one card) ---- */
+.moments-card{position:relative;max-width:72rem;margin:0 auto;border-radius:1.25rem;overflow:hidden;box-shadow:0 20px 25px -5px rgba(0,0,0,.12),0 8px 10px -6px rgba(0,0,0,.1);display:grid;background:#fff}
+.moments-image{position:relative;aspect-ratio:3/2}
+.moments-track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.35,1)}
+.moments-slide{width:100%;height:100%;flex-shrink:0}
+.moments-slide img{width:100%;height:100%;object-fit:cover;display:block}
+.moments-dots{position:absolute;bottom:16px;left:0;right:0;z-index:2;display:flex;justify-content:center;gap:8px}
+.moments-dot{height:8px;width:8px;border-radius:9999px;background:rgba(255,255,255,.55);border:none;cursor:pointer;transition:all .3s ease;padding:0}
+.moments-dot.is-active{width:24px;background:#fff}
+.moments-dot:hover{background:rgba(255,255,255,.85)}
+.moments-stats{background:#FEFBF1;display:flex;flex-direction:row;align-items:stretch;justify-content:space-around;padding:20px 12px}
+.moments-stat{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1;padding:0 8px}
+.moments-stat-value{font-size:22px;font-weight:600;color:#111827;margin-top:8px;margin-bottom:2px}
+.moments-stat-label{font-size:11px;color:#494949}
+@media (min-width:1024px){
+  .moments-card{grid-template-columns:68% 32%}
+  .moments-image{aspect-ratio:auto}
+  .moments-stats{flex-direction:column;justify-content:center;gap:28px;padding:32px 20px}
+  .moments-stat{padding:0}
+  .moments-stat-value{font-size:28px;margin-top:12px}
+  .moments-stat-label{font-size:14px}
+}
+
+/* ---- Moments section layout (custom, since Tailwind never compiled a matching responsive grid-cols utility) ---- */
+.moments-layout{display:flex;flex-direction:column;gap:1.5rem}
+.moments-layout>*:first-child{width:100%}
+.moments-layout>*:last-child{width:100%}
+@media (min-width:1024px){
+  .moments-layout{display:grid;grid-template-columns:73% calc(27% - 1.5rem);align-items:stretch;gap:1.5rem}
+  .moments-layout>*:first-child{width:auto}
+  .moments-layout>*:last-child{width:auto;height:100%}
+}
+
+/* ---- Moments stats stack (always vertical, avoids fragile responsive grid classes) ---- */
+.moments-stats-stack{display:flex;flex-direction:column;justify-content:space-between;width:100%}
+
+/* ---- Impact stat cards min-height (fix: previous min-h-[] utilities never compiled) ---- */
+.impact-stat-card{min-height:168px}
+@media (min-width:640px){.impact-stat-card{min-height:184px}}
+
+/* ---- Contact page two-column layout (fix: original lg:grid-cols-[minmax(...)] never compiled) ---- */
+.contact-layout{display:grid;grid-template-columns:1fr}
+@media (min-width:1024px){.contact-layout{grid-template-columns:minmax(360px,35%) minmax(600px,65%)}}
