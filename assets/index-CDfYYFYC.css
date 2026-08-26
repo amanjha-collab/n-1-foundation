@@ -121,3 +121,44 @@
 /* ---- Contact page two-column layout (fix: original lg:grid-cols-[minmax(...)] never compiled) ---- */
 .contact-layout{display:grid;grid-template-columns:1fr}
 @media (min-width:1024px){.contact-layout{grid-template-columns:minmax(360px,35%) minmax(600px,65%)}}
+
+/* ---- Hero headline word-by-word reveal (premium entrance animation) ---- */
+.hero-word{display:inline-block}
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes heroWordReveal{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes heroFadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  .hero-word{opacity:0;animation:heroWordReveal .7s cubic-bezier(.22,1,.36,1) forwards}
+  .hero-subtext-anim{opacity:0;animation:heroFadeUp .6s cubic-bezier(.22,1,.36,1) 1s forwards}
+  .hero-cta-anim{opacity:0;animation:heroFadeUp .6s cubic-bezier(.22,1,.36,1) 1.2s forwards}
+}
+
+/* ---- Donation form (custom CSS, guaranteed to render regardless of Tailwind compilation) ---- */
+.donate-card{background:#fff;border-radius:1rem;box-shadow:0 10px 25px -5px rgba(0,0,0,.08);padding:22px 24px}
+.donate-card h3{font-size:19px;font-weight:700;color:#111827;margin-bottom:16px}
+.donate-form-label{display:block;font-size:14px;font-weight:600;color:#1f2937;margin-bottom:6px}
+.donate-required{color:#dc2626}
+.donate-form-group{margin-bottom:18px}
+.donate-form-input,.donate-form-select{width:100%;padding:12px 14px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;color:#111827;background:#fff;font-family:inherit}
+.donate-form-input:focus,.donate-form-select:focus{outline:none;border-color:#004AAD;box-shadow:0 0 0 3px rgba(0,74,173,.12)}
+.donate-form-input::placeholder{color:#9ca3af}
+.donate-amount-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+@media (min-width:480px){.donate-amount-grid{grid-template-columns:repeat(4,1fr)}}
+@media (min-width:768px){.donate-amount-grid{grid-template-columns:repeat(7,1fr)}}
+.donate-amount-btn{padding:11px 4px;border-radius:8px;border:2px solid #00AD9B;background:#00AD9B;color:#fff;font-weight:600;font-size:13px;cursor:pointer;transition:all .2s ease}
+.donate-amount-btn:hover{background:#00967f;transform:translateY(-1px)}
+.donate-amount-btn.is-selected{background:#004AAD;border-color:#3A86FF}
+.donate-custom-amount-row{display:flex;gap:8px}
+.donate-currency-select{width:70px;flex-shrink:0}
+.donate-phone-row{display:flex;gap:8px}
+.donate-phone-row select{width:80px;flex-shrink:0}
+.donate-checkbox-row{display:flex;align-items:flex-start;gap:10px;margin-top:18px}
+.donate-checkbox-row input{margin-top:3px;flex-shrink:0;width:18px;height:18px;cursor:pointer;accent-color:#004AAD}
+.donate-checkbox-row label{font-size:13px;color:#374151;line-height:1.5}
+.donate-checkbox-row a{color:#004AAD;font-weight:600;text-decoration:underline}
+.donate-error-msg{color:#dc2626;font-size:13px;margin-top:10px;background:#fef2f2;padding:10px 14px;border-radius:8px}
+.donate-submit-btn{width:100%;margin-top:20px;background:#004AAD;color:#fff;border:2px solid #3A86FF;border-radius:8px;padding:14px;font-size:15px;font-weight:600;cursor:pointer;transition:all .2s ease;display:flex;align-items:center;justify-content:center;gap:8px}
+.donate-submit-btn:hover:not(:disabled){background:#696969;border-color:#fff}
+.donate-submit-btn:disabled{opacity:.6;cursor:not-allowed}
+.donate-success-wrap{text-align:center;padding:20px 4px}
+.donate-success-icon{width:56px;height:56px;border-radius:9999px;background:#d1fae5;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.donate-secure-note{display:flex;align-items:center;justify-content:center;gap:6px;color:#6b7280;font-size:12px;margin-top:12px}
