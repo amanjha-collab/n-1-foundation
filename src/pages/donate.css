@@ -1,0 +1,284 @@
+/* Scoped styles for the donation experience. Authored as real CSS (not purged
+   Tailwind utilities) so the widget has full design control. Brand tokens mirror
+   the site's design system. */
+.dn {
+  --n1-blue: #004aad;
+  --n1-blue-dark: #00398a;
+  --n1-amber: #feb344;
+  --n1-teal: #00ad9b;
+  --n1-cream: #fefbf1;
+  --n1-ink: #1b2430;
+  --n1-muted: #5b6675;
+  --n1-line: #ece6d6;
+  --n1-line-strong: #d9d2bf;
+  --dn-radius: 20px;
+  background: var(--n1-cream);
+  padding: 5.5rem 0 6rem;
+}
+.dn__container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.dn__head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3rem;
+}
+.dn__eyebrow {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--n1-teal);
+  margin: 0 0 0.75rem;
+}
+.dn__title {
+  font-family: "DM Serif Display", serif;
+  font-weight: 400;
+  font-size: clamp(2.1rem, 4vw, 3rem);
+  line-height: 1.08;
+  color: var(--n1-ink);
+  margin: 0 0 0.9rem;
+}
+.dn__title em { color: var(--n1-amber); font-style: italic; }
+.dn__subtitle {
+  font-family: Poppins, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--n1-muted);
+  margin: 0;
+}
+
+.dn__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.75rem;
+  align-items: start;
+}
+@media (min-width: 900px) {
+  .dn__grid { grid-template-columns: 0.9fr 1.1fr; gap: 2.5rem; }
+}
+
+/* ---- Left: narrative + impact tiers ---- */
+.dn__lead {
+  font-family: Poppins, sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--n1-ink);
+  margin: 0 0 1.75rem;
+}
+.dn__lead b { color: var(--n1-blue); font-weight: 600; }
+
+.dn__tiers { display: flex; flex-direction: column; gap: 0.75rem; }
+.dn__tier {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid var(--n1-line);
+  background: #fff;
+  transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dn__tier[data-active="true"] {
+  border-color: var(--n1-blue);
+  box-shadow: 0 10px 30px -14px rgba(0, 74, 173, 0.55);
+  transform: translateY(-2px);
+}
+.dn__tier-mark {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: #eaf2ff;
+  color: var(--n1-blue);
+  transition: background 0.35s ease, color 0.35s ease;
+}
+.dn__tier[data-active="true"] .dn__tier-mark { background: var(--n1-blue); color: #fff; }
+.dn__tier-body { font-family: Poppins, sans-serif; }
+.dn__tier-amt {
+  font-weight: 600;
+  font-size: 0.98rem;
+  color: var(--n1-ink);
+}
+.dn__tier-desc { font-size: 0.9rem; color: var(--n1-muted); line-height: 1.45; }
+
+.dn__assure {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--n1-line-strong);
+}
+.dn__assure span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.85rem;
+  color: var(--n1-ink);
+}
+.dn__assure svg { color: var(--n1-teal); flex: none; }
+
+/* ---- Right: the donation card ---- */
+.dn__card {
+  background: #fff;
+  border-radius: var(--dn-radius);
+  border: 1px solid var(--n1-line);
+  box-shadow: 0 30px 60px -34px rgba(27, 36, 48, 0.35);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+}
+.dn__card-title {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.6rem;
+  color: var(--n1-ink);
+  margin: 0 0 0.35rem;
+}
+.dn__card-note {
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  color: var(--n1-muted);
+  margin: 0 0 1.5rem;
+}
+
+.dn__label {
+  display: block;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 0.82rem;
+  color: var(--n1-ink);
+  margin: 0 0 0.6rem;
+}
+.dn__chips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+@media (min-width: 460px) { .dn__chips { grid-template-columns: repeat(4, 1fr); } }
+.dn__chip {
+  position: relative;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--n1-blue);
+  background: #fff;
+  border: 1.5px solid var(--n1-line-strong);
+  border-radius: 12px;
+  padding: 0.85rem 0.5rem;
+  cursor: pointer;
+  transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.dn__chip:hover { border-color: var(--n1-blue); transform: translateY(-2px); }
+.dn__chip[data-active="true"] {
+  background: var(--n1-blue);
+  border-color: var(--n1-blue);
+  color: #fff;
+}
+.dn__chip-badge {
+  position: absolute;
+  top: -9px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #3a2a00;
+  background: var(--n1-amber);
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.dn__custom {
+  position: relative;
+  margin-top: 0.9rem;
+}
+.dn__custom-cur {
+  position: absolute;
+  left: 0.9rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  color: var(--n1-muted);
+  pointer-events: none;
+}
+.dn__field {
+  width: 100%;
+  font-family: Poppins, sans-serif;
+  font-size: 0.95rem;
+  color: var(--n1-ink);
+  background: #fff;
+  border: 1.5px solid var(--n1-line-strong);
+  border-radius: 12px;
+  padding: 0.8rem 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.dn__field::placeholder { color: #9aa3b0; }
+.dn__field:focus {
+  outline: none;
+  border-color: var(--n1-blue);
+  box-shadow: 0 0 0 3px rgba(58, 134, 255, 0.18);
+}
+.dn__custom .dn__field { padding-left: 1.9rem; }
+
+.dn__fields { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+.dn__row { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
+@media (min-width: 520px) { .dn__row { grid-template-columns: 1fr 1fr; } }
+
+.dn__submit {
+  width: 100%;
+  margin-top: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #fff;
+  background: var(--n1-blue);
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 16px 30px -14px rgba(0, 74, 173, 0.7);
+  transition: background 0.25s ease, transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease;
+}
+.dn__submit:hover:not(:disabled) { background: var(--n1-blue-dark); transform: translateY(-2px); }
+.dn__submit:disabled { opacity: 0.65; cursor: default; }
+
+.dn__secure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.8rem;
+  color: var(--n1-muted);
+}
+.dn__secure svg { color: var(--n1-teal); }
+
+.dn__alert {
+  margin-top: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-family: Poppins, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+}
+.dn__alert svg { flex: none; margin-top: 1px; }
+.dn__alert--success { background: #e9f8ef; color: #14683c; }
+.dn__alert--error { background: #fdecec; color: #a52121; }
+.dn__alert--info { background: #eef3fb; color: #2f4a73; }
