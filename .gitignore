@@ -5,3 +5,4 @@ dist/
 .wrangler/
 *.log
 .dev.vars
+.vite/
