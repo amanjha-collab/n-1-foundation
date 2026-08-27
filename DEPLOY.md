@@ -28,6 +28,12 @@ Production values with `rzp_live_…` keys. No code change needed.
 
 The `functions/` directory is picked up automatically as Cloudflare Pages Functions.
 
+> **Important:** the **Deploy command** field must be **empty**. If it contains
+> `npx wrangler deploy`, the build tries to deploy a Worker instead of building the
+> site and fails (`Wrangler requires Node.js v22`, "no entry-point", etc.). For a
+> Pages project you only need the **Build command** (`npm run build`) and **Output
+> directory** (`dist`); Cloudflare serves the output and the Functions itself.
+
 ## Step 2 — Deploy (your usual git flow)
 
 ```bash
