@@ -6,11 +6,10 @@
     <title>n+1 Social Foundation</title>
     <meta name="description" content="n+1 Social Foundation empowers children through literacy and youth through innovation. Join our Read-a-story and Solve-with-Bharat programs to create lasting change." />
     <meta name="author" content="n+1 Social Foundation" />
-    <link rel="icon" href="./logo-short.png" />
+    <link rel="icon" href="/logo-short.png" />
     <link rel="canonical" href="https://www.nplusone.org.in/" />
-    
-    
-    <!-- Google Fonts -->
+
+    <!-- Google Fonts (Playfair + Jakarta here; Poppins/DM Serif/Sarabun imported by the compiled CSS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -53,44 +52,16 @@
     <script>
       (function () {
         var seoData = {
-          "/": {
-            title: "n+1 Social Foundation | Empowering Children Through Literacy & Innovation",
-            description: "n+1 Social Foundation empowers children through literacy and youth through innovation. Join our Read-a-Story and Solve-with-Bharat programs to create lasting change."
-          },
-          "/about": {
-            title: "About Us | n+1 Social Foundation",
-            description: "Learn about n+1 Social Foundation's mission to create a better tomorrow through literacy, innovation, and community-led change."
-          },
-          "/programs": {
-            title: "Our Programs | Read-a-Story & Solve-with-Bharat | n+1 Social Foundation",
-            description: "Explore Read-a-Story, our volunteer-driven literacy initiative, and Solve-with-Bharat, our math foundations program for tribal schools."
-          },
-          "/get-involved": {
-            title: "Get Involved | Volunteer With n+1 Social Foundation",
-            description: "Volunteer your time and skills with n+1 Social Foundation. Join reading sessions, evaluation support, and content creation efforts."
-          },
-          "/resources": {
-            title: "Resources | Annual Reports & Research | n+1 Social Foundation",
-            description: "Access n+1 Social Foundation's annual reports, research publications, and training materials to understand our impact."
-          },
-          "/contact": {
-            title: "Contact Us | n+1 Social Foundation",
-            description: "Get in touch with n+1 Social Foundation for volunteering, partnerships, careers, or general inquiries."
-          },
-          "/donate": {
-            title: "Donate | Support n+1 Social Foundation",
-            description: "Your support helps fund resources, facilitators, and transport for children's education programs. Online donation options at n+1 Social Foundation are launching soon."
-          },
-          "/faq": {
-            title: "FAQ | n+1 Social Foundation",
-            description: "Frequently asked questions about n+1 Social Foundation's programs, volunteering, and donations."
-          },
-          "/testimony": {
-            title: "Testimonials | What People Say About Us | n+1 Social Foundation",
-            description: "Real stories from volunteers, parents, and students who have experienced the impact of n+1 Social Foundation's programs firsthand."
-          }
+          "/": { title: "n+1 Social Foundation | Empowering Children Through Literacy & Innovation", description: "n+1 Social Foundation empowers children through literacy and youth through innovation. Join our Read-a-Story and Solve-with-Bharat programs to create lasting change." },
+          "/about": { title: "About Us | n+1 Social Foundation", description: "Learn about n+1 Social Foundation's mission to create a better tomorrow through literacy, innovation, and community-led change." },
+          "/programs": { title: "Our Programs | Read-a-Story & Solve-with-Bharat | n+1 Social Foundation", description: "Explore Read-a-Story, our volunteer-driven literacy initiative, and Solve-with-Bharat, our math foundations program for tribal schools." },
+          "/get-involved": { title: "Get Involved | Volunteer With n+1 Social Foundation", description: "Volunteer your time and skills with n+1 Social Foundation. Join reading sessions, evaluation support, and content creation efforts." },
+          "/resources": { title: "Resources | Annual Reports & Research | n+1 Social Foundation", description: "Access n+1 Social Foundation's annual reports, research publications, and training materials to understand our impact." },
+          "/contact": { title: "Contact Us | n+1 Social Foundation", description: "Get in touch with n+1 Social Foundation for volunteering, partnerships, careers, or general inquiries." },
+          "/donate": { title: "Donate | Support n+1 Social Foundation", description: "Your support helps fund resources, facilitators, and transport for children's education programs." },
+          "/faq": { title: "FAQ | n+1 Social Foundation", description: "Frequently asked questions about n+1 Social Foundation's programs, volunteering, and donations." },
+          "/testimony": { title: "Testimonials | What People Say About Us | n+1 Social Foundation", description: "Real stories from volunteers, parents, and students who have experienced the impact of n+1 Social Foundation's programs firsthand." }
         };
-
         function updateMeta(pathname) {
           var data = seoData[pathname] || seoData["/"];
           if (!data) return;
@@ -107,9 +78,7 @@
             canonical.setAttribute("href", pathname === "/" ? base + "/" : base + pathname);
           }
         }
-
         updateMeta(window.location.pathname);
-
         var origPushState = history.pushState;
         var origReplaceState = history.replaceState;
         function fireUpdate() { updateMeta(window.location.pathname); }
@@ -118,18 +87,14 @@
         window.addEventListener("popstate", fireUpdate);
       })();
     </script>
-
-    
-    <script type="module" crossorigin src="./assets/index-VKGxH9yS.js?v=20260826b"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CDfYYFYC.css?v=20260826b">
   </head>
 
   <body>
     <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
     <script>
       (function () {
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
@@ -138,7 +103,6 @@
             }
           });
         }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
-
         function tagAndObserve() {
           document.querySelectorAll('section:not([data-reveal-init])').forEach(function (el) {
             if (el.closest('[role="dialog"]')) return;
@@ -147,7 +111,6 @@
             io.observe(el);
           });
         }
-
         tagAndObserve();
         var rootEl = document.getElementById('root');
         if (rootEl) {
