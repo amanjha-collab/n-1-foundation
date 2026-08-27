@@ -70,11 +70,6 @@ export default function Donate() {
       setStatus({ type: 'error', msg: 'Please choose or enter a valid donation amount.' });
       return;
     }
-    const keyId = import.meta.env.VITE_RAZORPAY_KEY_ID;
-    if (!keyId) {
-      setStatus({ type: 'info', msg: 'Payments are not switched on yet. Add your Razorpay key to go live.' });
-      return;
-    }
 
     setStatus({ type: 'info', msg: 'Starting secure checkout…' });
     const ok = await loadRazorpay();
@@ -92,8 +87,14 @@ export default function Donate() {
       if (!orderRes.ok) throw new Error('order');
       const order = await orderRes.json();
 
+      // The server hands us the public key id alongside the order.
+      if (!order.keyId) {
+        setStatus({ type: 'info', msg: 'Payments are not switched on yet. Add your Razorpay keys to the Worker to go live.' });
+        return;
+      }
+
       const rzp = new window.Razorpay({
-        key: keyId,
+        key: order.keyId,
         amount: order.amount,
         currency: order.currency,
         name: 'n+1 Social Foundation',

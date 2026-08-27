@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  // IMPORTANT: this must match the EXISTING Worker's name in your Cloudflare
+  // dashboard (the one your domain www.nplusone.org.in is attached to). If the
+  // dashboard shows a different name, change it here or the deploy creates a new,
+  // unattached Worker.
+  "name": "n-1-foundation",
+  "main": "src/worker.js",
+  "compatibility_date": "2024-11-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application"
+  }
+}

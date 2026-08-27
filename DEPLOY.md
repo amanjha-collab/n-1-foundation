@@ -1,60 +1,60 @@
-# Deploying to Cloudflare Pages
+# Deploying to Cloudflare (Workers + static assets)
 
-The repo is now a Vite + React source project (not a pre-built site), so Cloudflare
-must **build** it. The previous "just push and it deploys" workflow still applies once
-the build settings below are set **one time**.
+This project deploys as a **Cloudflare Worker** that serves the built SPA (static
+assets) and the donation API (`/api/*`). Config lives in `wrangler.jsonc`.
 
-## Step 1 — One-time: tell Cloudflare Pages how to build
+## Step 0 — Confirm the Worker name (do this once)
 
-Cloudflare dashboard → **Workers & Pages** → open the existing project → **Settings**.
+Open `wrangler.jsonc` and make sure `"name"` matches your **existing** Worker in the
+Cloudflare dashboard (the one `www.nplusone.org.in` is attached to). You can see the
+name at the top of the Worker's page, or in its `*.workers.dev` URL. If it differs,
+change the `name` in `wrangler.jsonc`, otherwise the deploy creates a new, unattached
+Worker and the live site won't update.
 
-**Build configuration** (Settings → Builds & deployments → Build configuration → Edit):
-- Framework preset: **Vite**
-- Build command: **`npm run build`**
-- Build output directory: **`dist`**
-- Root directory: leave as `/`
+## Step 1 — Build settings (one time, in the dashboard)
 
-**Environment variables** (Settings → Environment variables) — add these to **both**
-Production and Preview:
+Worker → **Settings → Build**:
+- Root directory: `/` (default)
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy`
 
-| Variable | Value | Notes |
+(`npm run build` produces `dist/`; `wrangler deploy` uploads the Worker + `dist/`.)
+Node is pinned to 22 via `.nvmrc`, which wrangler requires.
+
+## Step 2 — First deploy
+
+Push to the connected branch (`main`). Cloudflare runs the build and deploy. After
+this, the Worker has a script (not "static assets only"), so you can add variables.
+
+## Step 3 — Add the Razorpay keys (after the first successful deploy)
+
+Worker → **Settings → Variables and Secrets** → add:
+
+| Name | Value | Type |
 |---|---|---|
-| `VITE_RAZORPAY_KEY_ID` | `rzp_test_…` | used by the browser at build time |
-| `RAZORPAY_KEY_ID` | `rzp_test_…` | used by the server function |
-| `RAZORPAY_KEY_SECRET` | your key secret | click **Encrypt** — keep it secret |
+| `RAZORPAY_KEY_ID` | your `rzp_test_…` key id | Secret (or plaintext; it is public) |
+| `RAZORPAY_KEY_SECRET` | your key secret | **Secret** |
 
-Use **test** keys for now. When you go live (after Razorpay KYC), replace the three
-Production values with `rzp_live_…` keys. No code change needed.
+The browser never receives the secret. The public key id is sent to the browser only
+through the `/api/create-order` response. Until these are set, the donate button shows
+"payments are not switched on yet" (the site otherwise works normally).
 
-The `functions/` directory is picked up automatically as Cloudflare Pages Functions.
+## Everyday workflow
 
-> **Important:** the **Deploy command** field must be **empty**. If it contains
-> `npx wrangler deploy`, the build tries to deploy a Worker instead of building the
-> site and fails (`Wrangler requires Node.js v22`, "no entry-point", etc.). For a
-> Pages project you only need the **Build command** (`npm run build`) and **Output
-> directory** (`dist`); Cloudflare serves the output and the Functions itself.
+Same as before: `git add -A && git commit -m "…" && git push`. Cloudflare builds and
+deploys automatically.
 
-## Step 2 — Deploy (your usual git flow)
+## Local development
 
 ```bash
-git add -A
-git commit -m "..."
-git push
+npm run dev                       # http://localhost:5173 — UI + routing (no /api)
+# full stack incl. donations:
+npm run build && npx wrangler dev # http://localhost:8787 — Worker + assets + /api
 ```
 
-Cloudflare runs `npm install` then `npm run build`, and serves `dist/` + the Functions.
-
-## Recommended safe sequence
-
-1. Do Step 1 (build config + env vars).
-2. Push this branch (`rebuild-react-razorpay`) first. Cloudflare builds a **preview**
-   deployment at a temporary URL. Test it there: make a test donation and refresh a
-   deep link like `/donate` (the bug that used to 404).
-3. When the preview looks good, merge to `main` and push. That triggers the
-   **production** deploy to www.nplusone.org.in.
+Local `/api` needs a `.dev.vars` file (copy from `.env.example`) with your test keys.
 
 ## Going live with real donations
 
-Switch the Razorpay dashboard to Live mode (requires account activation / KYC),
-generate `rzp_live_…` keys, and update the three **Production** environment variables
-in Cloudflare. Redeploy (any push, or "Retry deployment").
+After Razorpay KYC, switch the dashboard to Live mode, generate `rzp_live_…` keys, and
+update `RAZORPAY_KEY_ID` / `RAZORPAY_KEY_SECRET` on the Worker. No code change.

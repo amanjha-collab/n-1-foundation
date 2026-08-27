@@ -21,32 +21,25 @@ npm install
 npm run dev          # http://localhost:5173  — site + client-side routing
 ```
 
-`npm run dev` serves the site and routing. The donation flow needs the Cloudflare Pages
-Functions in `functions/`, which Vite does not run. To test payments end-to-end locally:
+`npm run dev` serves the site and routing but not `/api` (a Worker). To test the
+donation flow end-to-end locally, run the Worker with the built assets:
 
 ```bash
 npm run build
-npx wrangler pages dev dist            # runs the Functions + static site together
+npx wrangler dev                       # http://localhost:8787 — Worker + assets + /api
 ```
 
-Create a `.env.local` from `.env.example` and add your **Razorpay test keys**.
+Create a `.dev.vars` from `.env.example` and add your **Razorpay test keys**.
 
-## Deployment (Cloudflare Pages)
+## Deployment
 
-- Build command: `npm run build`
-- Output directory: `dist`
-- Environment variables (Pages → Settings → Environment variables):
-  - `VITE_RAZORPAY_KEY_ID` — public key id (build-time, browser)
-  - `RAZORPAY_KEY_ID` — server (Functions)
-  - `RAZORPAY_KEY_SECRET` — server (Functions), **never** exposed to the browser
-
-Cloudflare Pages serves SPAs correctly (the `public/_redirects` `/* /index.html 200`
-rule), which fixes the "refresh on a deep link 404s" problem from the old deploy.
+Deploys as a Cloudflare Worker (`wrangler.jsonc`). See [DEPLOY.md](DEPLOY.md) for the
+one-time build settings and where the Razorpay keys go.
 
 ## Razorpay flow
 
-1. Browser posts the amount to `POST /api/create-order` → Function creates a Razorpay
-   order with the secret key and returns the order id.
-2. Razorpay Checkout opens in the browser with that order id.
-3. On success, the browser posts the payment ids to `POST /api/verify-payment` → Function
-   verifies the HMAC signature before the donation is treated as complete.
+1. Browser posts the amount to `POST /api/create-order` → the Worker creates a Razorpay
+   order with the secret key and returns the order id plus the public key id.
+2. Razorpay Checkout opens in the browser with that order id and key.
+3. On success, the browser posts the payment ids to `POST /api/verify-payment` → the
+   Worker verifies the HMAC signature before the donation is treated as complete.
