@@ -160,7 +160,7 @@ export default function Donate() {
             {/* Left: narrative + live impact */}
             <div>
               <p className="dn__lead">
-                At <b>N+1</b>, meaningful change begins with one more step, one more opportunity, and one more person choosing to act. Here is what your gift makes possible today.
+                At <b>n+1</b>, meaningful change begins with one more step, one more opportunity, and one more person choosing to act. Here is what your gift makes possible today.
               </p>
 
               <div className="dn__tiers" aria-hidden="true">

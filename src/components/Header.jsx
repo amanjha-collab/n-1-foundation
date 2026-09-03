@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const links = [
   { to: '/', label: 'Home' },
@@ -12,6 +12,9 @@ const links = [
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isActive = (to) => (to === '/' ? pathname === '/' : pathname.startsWith(to));
+
   return (
     <header className="sticky top-0 z-50 bg-white  border-b border-border z-[99]">
       <nav className="container mx-auto px-4 sm:px-6 2xl:px-[48px] py-3">
@@ -28,7 +31,7 @@ export default function Header() {
             {links.map((l) => (
               <Link
                 key={l.to}
-                className="text-sm font-medium transition-colors hover:text-[#FEB344] text-[#004AAD]"
+                className={`text-sm font-medium transition-colors border-b-2 pb-1 ${isActive(l.to) ? 'text-[#FEB344] border-[#FEB344]' : 'text-[#004AAD] border-transparent hover:text-[#FEB344]'}`}
                 to={l.to}
               >
                 {l.label}
@@ -59,7 +62,7 @@ export default function Header() {
             {links.map((l) => (
               <Link
                 key={l.to}
-                className="text-sm font-medium transition-colors hover:text-[#FEB344] text-[#004AAD]"
+                className={`text-sm font-medium transition-colors ${isActive(l.to) ? 'text-[#FEB344]' : 'text-[#004AAD] hover:text-[#FEB344]'}`}
                 to={l.to}
                 onClick={() => setOpen(false)}
               >
