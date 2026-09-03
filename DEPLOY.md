@@ -39,6 +39,45 @@ The browser never receives the secret. The public key id is sent to the browser 
 through the `/api/create-order` response. Until these are set, the donate button shows
 "payments are not switched on yet" (the site otherwise works normally).
 
+## Step 4 — Email receipts (optional, but donors are currently promised one)
+
+The Donate page tells donors "you will get a receipt by email." That's only true once
+this is set up. Uses [Resend](https://resend.com) — pick this because it's the
+simplest transactional email API for a small NGO's volume, with a free tier.
+
+1. Sign up at resend.com, verify your sending domain (they walk you through adding a
+   couple of DNS records — takes a few minutes)
+2. Generate an API key
+3. Worker → **Settings → Variables and Secrets** → add:
+
+| Name | Value | Type |
+|---|---|---|
+| `RESEND_API_KEY` | your Resend API key | **Secret** |
+| `ORG_EMAIL_FROM` | e.g. `n+1 Social Foundation <donations@nplusone.org.in>` | Plaintext |
+| `ORG_EMAIL` | e.g. `info@nplusone.org.in` — where new-donation alerts go | Plaintext |
+
+Until `RESEND_API_KEY` is set, donations still work end-to-end — the email step just
+silently no-ops (same graceful pattern as the Razorpay keys above).
+
+**Important, separate from any of this:** the email above is a payment confirmation,
+not the donor's actual tax-deduction proof. Under current Income Tax rules, that's
+**Form 10BE**, which your organization can only issue after filing **Form 10BD**
+(Statement of Donations) with the Income Tax Department, annually, by **31 May**. This
+is a compliance task for whoever handles your NGO's accounting — not something this
+website can automate — but the receipt email now clearly tells donors this, so nobody
+is confused expecting it to double as their tax certificate.
+
+## Step 5 — Webhook safety net (optional, recommended)
+
+Catches payments that succeed on Razorpay's side even if a donor's browser closes
+before the verify-payment step completes.
+
+1. Razorpay Dashboard → **Settings → Webhooks → Add New Webhook**
+2. URL: `https://www.nplusone.org.in/api/webhook`
+3. Secret: make up any strong random string
+4. Active events: check **payment.captured**
+5. Save, then add the same secret to the Worker as `RAZORPAY_WEBHOOK_SECRET`
+
 ## Everyday workflow
 
 Same as before: `git add -A && git commit -m "…" && git push`. Cloudflare builds and

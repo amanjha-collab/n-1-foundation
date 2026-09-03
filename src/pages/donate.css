@@ -232,6 +232,12 @@
 .dn__fields { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
 .dn__row { display: grid; grid-template-columns: 1fr; gap: 0.75rem; }
 @media (min-width: 520px) { .dn__row { grid-template-columns: 1fr 1fr; } }
+.dn__pan-note {
+  font-family: Poppins, sans-serif;
+  font-size: 0.75rem;
+  color: var(--n1-muted);
+  margin-top: -0.4rem;
+}
 
 .dn__submit {
   width: 100%;

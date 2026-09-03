@@ -57,6 +57,7 @@ export default function Donate() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [pan, setPan] = useState('');
   const [status, setStatus] = useState({ type: 'idle', msg: '' });
 
   const effectiveAmount = custom ? Math.floor(Number(custom)) || 0 : amount;
@@ -108,7 +109,7 @@ export default function Donate() {
           const verifyRes = await fetch('/api/verify-payment', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(response),
+            body: JSON.stringify({ ...response, name, email, pan, amount: effectiveAmount }),
           });
           const verify = await verifyRes.json().catch(() => ({}));
           if (verifyRes.ok && verify.valid) {
@@ -132,11 +133,11 @@ export default function Donate() {
       {/* Hero — preserved from the original design */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src="/assets/donate-hero-learning-sparks.jpg" alt="Children walking together with school bags" className="w-full h-full object-cover" />
+          <img src="/assets/donate-hero-learning-sparks.webp" alt="Children walking together with school bags" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/40 z-[1]"></div>
         <div className="absolute bottom-0 left-0 right-0 w-full h-[85px] overflow-hidden leading-[0] z-[2] pointer-events-none">
-          <img src="/assets/wave-divider.png" alt="" className="w-full h-full object-cover" />
+          <img src="/assets/wave-divider.webp" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
@@ -220,6 +221,15 @@ export default function Donate() {
                     <input className="dn__field" type="email" required placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                     <input className="dn__field" type="tel" placeholder="Phone (optional)" value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
+                  <input
+                    className="dn__field"
+                    type="text"
+                    placeholder="PAN (optional, for 80G tax certificate)"
+                    value={pan}
+                    onChange={(e) => setPan(e.target.value.toUpperCase())}
+                    maxLength={10}
+                  />
+                  <p className="dn__pan-note">We use this only to issue your official Form 10BE tax certificate at year end.</p>
                 </div>
 
                 <button type="submit" className="dn__submit" disabled={status.type === 'info' && status.msg.includes('checkout')}>
