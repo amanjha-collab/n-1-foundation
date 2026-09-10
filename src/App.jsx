@@ -7,7 +7,7 @@ import Donate from './pages/Donate.jsx';
 
 // Each page's HTML is now its own lazy-loaded chunk (via Vite's code-splitting),
 // so a visitor only ever downloads the one page they're actually viewing, instead
-// of all 9 pages' content being bundled into the initial JS payload for everyone.
+// of all pages' content being bundled into the initial JS payload for everyone.
 function lazyRawPage(loader) {
   return lazy(() => loader().then((m) => ({ default: () => <RawPage html={m.default} /> })));
 }
@@ -15,11 +15,14 @@ function lazyRawPage(loader) {
 const HomePage = lazyRawPage(() => import('./pages/bodies/home.html?raw'));
 const AboutPage = lazyRawPage(() => import('./pages/bodies/about.html?raw'));
 const ProgramsPage = lazyRawPage(() => import('./pages/bodies/programs.html?raw'));
+const ReadAStoryPage = lazyRawPage(() => import('./pages/bodies/read_a_story.html?raw'));
+const SolveWithBharatPage = lazyRawPage(() => import('./pages/bodies/solve_with_bharat.html?raw'));
 const GetInvolvedPage = lazyRawPage(() => import('./pages/bodies/get_involved.html?raw'));
 const ResourcesPage = lazyRawPage(() => import('./pages/bodies/resources.html?raw'));
 const ContactPage = lazyRawPage(() => import('./pages/bodies/contact.html?raw'));
-const FaqPage = lazyRawPage(() => import('./pages/bodies/faq.html?raw'));
 const TestimonyPage = lazyRawPage(() => import('./pages/bodies/testimony.html?raw'));
+const FaqPage = lazy(() => import('./pages/Faq.jsx'));
+const SuccessStoriesPage = lazy(() => import('./pages/SuccessStories.jsx'));
 
 // Scroll to top on route change (and handle in-page #anchors).
 function ScrollManager() {
@@ -44,8 +47,11 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/programs" element={<ProgramsPage />} />
+          <Route path="/programs/read-a-story" element={<ReadAStoryPage />} />
+          <Route path="/programs/solve-with-bharat" element={<SolveWithBharatPage />} />
           <Route path="/get-involved" element={<GetInvolvedPage />} />
           <Route path="/resources" element={<ResourcesPage />} />
+          <Route path="/success-stories" element={<SuccessStoriesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="/faq" element={<FaqPage />} />

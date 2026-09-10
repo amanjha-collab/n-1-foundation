@@ -15,12 +15,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-base sm:text-lg lg:text-lg text-white mb-6 font-sarabun">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="font-bold text-base sm:text-lg lg:text-lg text-white mb-4 font-sarabun">Quick Links</h4>
+            <ul className="ft-quick">
               <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/about">About Us</Link></li>
-              <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/programs">Programs</Link></li>
-              <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/get-involved">Get Involved</Link></li>
               <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/resources">Resources</Link></li>
+              <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/programs">Programs</Link></li>
+              <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/success-stories">Success Stories</Link></li>
+              <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/get-involved">Get Involved</Link></li>
               <li><Link className="text-white/90 hover:text-white transition-colors text-xs sm:text-sm lg:text-sm block  font-sarabun" to="/contact">Contact</Link></li>
             </ul>
           </div>
