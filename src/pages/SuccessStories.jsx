@@ -4,83 +4,29 @@ import { Link } from 'react-router-dom';
 // Only real, verified stories go here. Do not add invented/placeholder
 // beneficiary stories - for a nonprofit, that's a credibility risk if a donor
 // or journalist ever asks for the person behind a story that doesn't exist.
-const stories = [
-  {
-    id: 'sapna-karmoda',
-    name: 'Sapna Karmoda',
-    date: 'January 2026',
-    excerpt:
-      "A tribal student who went from state schooling through Class 12, to a hostel during her D.Ed, to weekly English sessions with a volunteer from abroad - and now reads with children from her own community.",
-    image: '/assets/moments-group-photo-school.webp',
-    secondImage: '/assets/moments-girl-writing-notebook.webp',
-    secondImageCaption: 'Sapna with students she now mentors in her own community.',
-    body: [
-      "Sapna grew up attending state-run schools in a tribal community, and continued her education through a hostel while completing her D.Ed (Diploma in Education). Like many first-generation learners, spoken English was not something she had much exposure to growing up.",
-      "Through n+1 Social Foundation's Read-a-story programme, Sapna was paired with Nick, a volunteer tutor from abroad, for weekly one-to-one English reading sessions over the phone. Over time, consistent practice built her reading fluency and her confidence speaking English.",
-      "That confidence carried into her studies and, eventually, into clearing the selection process for a government teaching position. Today, Sapna works as a teacher and continues to read with children from her own community - passing forward the same kind of support she once received.",
-    ],
-  },
-];
 
-function ChevronIcon({ open }) {
+function ArrowIcon({ open }) {
   return (
     <svg
-      width="18"
-      height="18"
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
       strokeWidth="2"
       strokeLinecap="round"
       strokeLinejoin="round"
-      style={{ transition: 'transform .18s ease', transform: open ? 'rotate(180deg)' : 'none' }}
+      style={{ transition: 'transform .2s ease', transform: open ? 'rotate(90deg)' : 'none' }}
     >
-      <path d="m6 9 6 6 6-6"></path>
+      <path d="M5 12h14"></path>
+      <path d="m12 5 7 7-7 7"></path>
     </svg>
   );
 }
 
-function StoryRow({ story }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="ss-row">
-      <img loading="lazy" src={story.image} alt={story.name} className="ss-row-img" />
-      <div style={{ flex: 1 }}>
-        <h3 className="text-xl font-bold text-gray-900">{story.name}</h3>
-        <p className="ss-row-date">Published on {story.date}</p>
-        <p className="text-gray-600 mt-2">{story.excerpt}</p>
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          className="ss-pill"
-          style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-        >
-          {open ? 'Show Less' : 'Read More'} <ChevronIcon open={open} />
-        </button>
-        {open && (
-          <div className="ss-panel" role="region">
-            {story.body.map((p, i) => (
-              <p key={i} className="text-gray-700 leading-relaxed mb-3">{p}</p>
-            ))}
-            {story.secondImage && (
-              <figure className="ss-figure">
-                <img src={story.secondImage} alt={story.secondImageCaption} />
-                <figcaption>{story.secondImageCaption}</figcaption>
-              </figure>
-            )}
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
-
 export default function SuccessStories() {
-  const [showAll, setShowAll] = useState(false);
-  const featured = stories[0];
-  const rest = stories.slice(1);
-  const visibleRest = showAll ? rest : rest.slice(0, 2);
+  const [open, setOpen] = useState(false);
 
   return (
     <main>
@@ -95,50 +41,63 @@ export default function SuccessStories() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white animate-fade-in">Success Stories</h1>
-            <p className="text-lg sm:text-xl text-white leading-relaxed max-w-3xl mx-auto">Real stories from the children and volunteers behind our programmes</p>
+            <p className="text-lg sm:text-xl text-white leading-relaxed max-w-3xl mx-auto">Amazing children, amazing stories: how volunteers and communities change one child's future at a time.</p>
           </div>
         </div>
       </section>
 
       <section className="py-16 reveal-on-scroll">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-          <div className="ss-featured">
-            <img loading="lazy" src={featured.image} alt={featured.name} className="ss-featured-img" />
-            <div className="ss-featured-body">
-              <span className="ss-featured-eyebrow">Featured Story</span>
-              <h2 className="text-2xl font-bold text-gray-900 mt-2 mb-2">{featured.name}</h2>
-              <p className="ss-row-date mb-2">Published on {featured.date}</p>
-              <p className="text-gray-600 leading-relaxed mb-4">{featured.excerpt}</p>
-              <FeaturedToggle story={featured} />
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="ss-featured ss-featured--compact">
+            <div className="ss-featured__media">
+              <img src="/assets/sapna-with-nick.webp" alt="Sapna Karmoda reading English with volunteer Nick" />
+            </div>
+            <div className="ss-featured__body">
+              <span className="ss-featured__eyebrow">Featured story</span>
+              <h2 className="ss-featured__title">Sapna Karmoda: From a Tribal Classroom to a Government Job</h2>
+              <p className="ss-featured__excerpt">
+                A tribal student from Maharashtra, Sapna joined Read-a-story to close the one gap her schooling could not &mdash; English.
+                Weekly sessions with Nick, a volunteer from abroad, took her from reading aloud to answering an interview panel in
+                English &mdash; and into a government job.
+              </p>
+              <button
+                type="button"
+                className="ss-btn"
+                aria-expanded={open}
+                aria-controls="ss-panel-featured"
+                data-state={open ? 'open' : 'closed'}
+                onClick={() => setOpen((v) => !v)}
+              >
+                {open ? 'Show Less' : 'Read More'} <ArrowIcon open={open} />
+              </button>
+              {open && (
+                <div className="ss-panel" id="ss-panel-featured" role="region" data-state="open">
+                  <p>
+                    &ldquo;The state took care of my education till Class 12, and the hostel took care of me through D.Ed,&rdquo; Sapna says.
+                    What no scheme could give her was the confidence to speak and read English &mdash; the language every interview and
+                    every application form assumed she already had.
+                  </p>
+                  <p>
+                    Nick, a volunteer from overseas, sat with her over newspapers and storybooks: she read aloud, he corrected gently,
+                    and neither of them skipped a week. Reading turned into speaking, and speaking turned into answering questions in
+                    front of a panel.
+                  </p>
+                  <p>
+                    Sapna cleared her selection and now holds a government post &mdash; the first in her family to do so. She still
+                    returns to the programme, this time on the other side of the call, reading with children from her own community.
+                  </p>
+                  <figure className="ss-figure">
+                    <img loading="lazy" src="/assets/sapna-story.webp" alt="Sapna Karmoda telling her story" />
+                    <figcaption>Sapna telling her story in her village &mdash; &ldquo;the state took care of my education till 12th, and the hostel for D.Ed.&rdquo;</figcaption>
+                  </figure>
+                </div>
+              )}
             </div>
           </div>
 
-          {rest.length > 0 && (
-            <>
-              <div className="mt-10">
-                {visibleRest.map((s) => (
-                  <StoryRow key={s.id} story={s} />
-                ))}
-              </div>
-              {rest.length > 2 && !showAll && (
-                <div className="text-center mt-6">
-                  <button
-                    type="button"
-                    onClick={() => setShowAll(true)}
-                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium h-11 bg-[#004AAD] text-white hover:bg-[#003a8c] transition-colors px-8 rounded-md"
-                  >
-                    Show More Stories
-                  </button>
-                </div>
-              )}
-            </>
-          )}
-
-          {rest.length === 0 && (
-            <p className="text-center text-gray-500 mt-8">
-              More stories are on the way as we verify them with the families and volunteers involved.
-            </p>
-          )}
+          <p className="text-center text-gray-500 mt-10 max-w-xl mx-auto">
+            More stories are on the way as we verify them with the families and volunteers involved.
+          </p>
         </div>
       </section>
 
@@ -157,35 +116,5 @@ export default function SuccessStories() {
         </div>
       </section>
     </main>
-  );
-}
-
-function FeaturedToggle({ story }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <>
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        className="ss-pill"
-        style={{ border: 'none', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '6px' }}
-      >
-        {open ? 'Show Less' : 'Read Full Story'} <ChevronIcon open={open} />
-      </button>
-      {open && (
-        <div className="ss-panel" role="region">
-          {story.body.map((p, i) => (
-            <p key={i} className="text-gray-700 leading-relaxed mb-3">{p}</p>
-          ))}
-          {story.secondImage && (
-            <figure className="ss-figure">
-              <img src={story.secondImage} alt={story.secondImageCaption} />
-              <figcaption>{story.secondImageCaption}</figcaption>
-            </figure>
-          )}
-        </div>
-      )}
-    </>
   );
 }

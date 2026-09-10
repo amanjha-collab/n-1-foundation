@@ -1,153 +1,172 @@
 import { useState, useMemo } from 'react';
 
-// ============================================================
-// DRAFT CONTENT - NEEDS CLIENT SIGN-OFF before launch.
-// Several specifics below are provisional placeholders, flagged
-// individually with a (DRAFT) note in this file. In particular:
-// the call window, the 3-month minimum commitment, "calls are not
-// recorded", the WhatsApp/Skype/Google Voice suggestions, and the
-// beginner/intermediate/advanced level definitions are all guesses
-// that need confirmation from whoever runs the programme day-to-day.
-// ============================================================
-
-const groups = [
-  {
-    id: 'volunteering',
-    title: 'Volunteering',
-    chipBg: '#DBEAFE',
-    chipColor: '#004AAD',
-    items: [
-      {
-        q: 'How do I get involved?',
-        a: 'Sign up through our Get Involved page. Once your registration is reviewed, we\u2019ll match you with a child based on availability and requirements.',
-      },
-      {
-        q: 'What are the required skills to teach?',
-        a: 'Fluency in spoken English and patience with young learners. No formal teaching qualification is required.',
-      },
-      {
-        q: 'Can I teach from outside of India?',
-        a: 'Yes. Since sessions happen over a phone call, volunteers can participate from anywhere in the world.',
-      },
-      {
-        q: 'Where are the students located?',
-        a: 'Students are located in tribal and underserved parts of India, primarily in rural Maharashtra.',
-      },
-      {
-        q: 'Do I need to speak the local language?',
-        a: 'No. Sessions are conducted in English. Some familiarity with the local language can help but is not required.',
-      },
-      {
-        q: 'Can my school, college or company volunteer as a group?',
-        a: 'Yes. We partner with institutions who register groups of volunteers together, and can coordinate onboarding for larger cohorts.',
-      },
-      {
-        q: 'Do volunteers receive a certificate?',
-        a: 'Yes. Volunteers receive a certificate after completing the required 12 hours of verified sessions.',
-      },
-    ],
-  },
-  {
-    id: 'time-commitment',
-    title: 'Time Commitment',
-    chipBg: '#FEF3C7',
-    chipColor: '#B45309',
-    items: [
-      {
-        q: 'How much time do I need to commit each week?',
-        a: 'Sessions are approximately 30 minutes, once a week, at a time agreed with your paired student.',
-      },
-      {
-        q: 'What is the minimum commitment period?',
-        a: '(DRAFT \u2013 to confirm) We currently ask volunteers to commit to a minimum of three months, so the child has a consistent tutor to build progress with.',
-      },
-      {
-        q: 'What if I need to pause or discontinue partway through?',
-        a: 'Let your coordinator know as early as possible so we can arrange alternate support for the child and avoid a gap in their sessions.',
-      },
-    ],
-  },
-  {
-    id: 'call-format',
-    title: 'Call Format and Teaching',
-    chipBg: '#DCFCE7',
-    chipColor: '#0F8A5F',
-    items: [
-      {
-        q: 'How does a session actually work?',
-        a: 'The child reads aloud from a physical storybook while the volunteer follows along on a digital copy, over a phone call, with the tutor guiding pronunciation and comprehension.',
-      },
-      {
-        q: 'What platform do the calls happen on?',
-        a: '(DRAFT \u2013 to confirm) Most sessions happen over a regular phone call. Some volunteer-student pairs use WhatsApp, Skype or Google Voice depending on connectivity on either side.',
-      },
-      {
-        q: 'Is there a set call window?',
-        a: '(DRAFT \u2013 to confirm) Sessions are typically scheduled between 5:00\u20138:30 pm IST on weekdays, to work around school hours in India.',
-      },
-      {
-        q: 'Are calls recorded?',
-        a: '(DRAFT \u2013 to confirm) No, calls themselves are not recorded. Session completion and hours are logged through our internal system for attendance and certification purposes.',
-      },
-      {
-        q: 'How are student reading levels defined?',
-        a: '(DRAFT \u2013 to confirm) Students are grouped as beginner, intermediate or advanced based on an initial reading assessment, which helps volunteers pick appropriate material.',
-      },
-      {
-        q: 'What if my assigned child misses a session?',
-        a: 'Let your coordinator know where possible. Repeated missed sessions may lead to a review of the pairing, and participants can request reactivation later.',
-      },
-      {
-        q: 'Can I volunteer with more than one child?',
-        a: 'Yes, depending on availability and programme requirements you may be paired with more than one student.',
-      },
-      {
-        q: 'Who do I contact if I have a technical issue during a call?',
-        a: 'Reach out to your programme coordinator, who can help troubleshoot connectivity issues or help reschedule the session.',
-      },
-    ],
-  },
+const rasFaqs = [
+  ['What is Read-a-Story (RAS)?', "RAS is n+1 Social Foundation\u2019s English reading programme. Children read storybooks while a volunteer tutor supports them through regular one-to-one phone sessions."],
+  ['Who can participate?', 'Children who need support with English reading can participate. Volunteers, schools, colleges, companies and institutions can also partner with the programme.'],
+  ['How does a session work?', "The child reads from a physical storybook/textbook while the tutor has a digital copy. The tutor calls through the programme's phone/telephony system and guides the child through reading and conversation."],
+  ['Who are the tutors?', 'Tutors are volunteers who register through institutions, organisations or individually.'],
+  ['How are students and tutors paired?', 'n+1 pairs students and tutors based on programme requirements, level, availability and other relevant information. Pairings may be reviewed when circumstances change.'],
+  ['What if a session is missed?', 'The student or tutor should inform the RAS coordinator where possible. Repeated missed sessions may lead to a review of the pairing or an inactive status. Participants can request reactivation.'],
+  ['Are volunteer hours recorded?', 'Yes. Hours are normally recorded through the programme\u2019s cloud telephony system. If a technical issue prevents logging, the volunteer may be asked for supporting information.'],
+  ['Do volunteers receive certificates?', 'Volunteers may receive a certificate after completing the required 12 hours. The threshold and format may vary by institution or programme arrangement. Certificates are issued after verification and approval.'],
+  ['Can a volunteer work with more than one child?', 'Yes, where programme requirements and availability permit. In some situations, a volunteer may work with more than one child or a small group.'],
+  ['Can participation be stopped?', 'Yes. A student, parent/guardian or tutor may request withdrawal. n+1 may also deactivate participation for safeguarding, conduct, repeated absence or programme-related reasons.'],
+  ['How does n+1 protect children?', "Child safety is a priority. Programme interactions are structured and monitored. Direct sharing of a child's contact details requires the appropriate parental/guardian consent. Photos and videos are used only where appropriate consent has been obtained."],
+  ['Are RAS calls monitored?', 'The telephony system is used for call logging and programme monitoring. Monitoring supports quality, attendance, programme management and safeguarding.'],
+  ['Can parents contact the RAS team?', 'Yes. Parents/guardians can contact the programme team regarding participation, schedules, missed sessions or other programme concerns.'],
 ];
 
-function PlusIcon() {
+const swbFaqs = [
+  ['What is Solve-with-Bharat (SWB)?', "SWB is n+1 Social Foundation's foundational numeracy programme. It focuses on strengthening children's understanding and practice of addition, subtraction, multiplication and division."],
+  ['Who is SWB for?', 'It is designed for children who need additional support in foundational numeracy and is implemented with schools and communities, supported by trained Community Facilitators (CFs).'],
+  ['How does SWB work?', 'Children practise mathematics using a mobile-based practice application. CFs support practice, monitor participation and identify areas needing additional practice.'],
+  ['What does a Community Facilitator do?', 'CFs support children, record relevant information, monitor attendance and progress, and help identify students who need additional support.'],
+  ['What mathematics does SWB cover?', 'The programme focuses on addition (+), subtraction (\u2212), multiplication (\u00d7) and division (\u00f7).'],
+  ['How is progress measured?', 'The programme may use baseline, midline and endline assessments, along with practice and participation data, to understand learning progress.'],
+  ['What if a child is absent?', 'The absence is communicated to the programme team where possible. The CF may follow up and support the child in continuing practice.'],
+  ['Can children receive additional support?', 'Yes. Practice and monitoring data help the CF and programme team identify children who need additional attention or practice.'],
+  ['What information is collected?', 'n+1 may collect information needed for registration, attendance, practice, assessment and programme monitoring. Information should be limited to what is needed for programme purposes.'],
+  ['Who can I contact about SWB?', 'Parents/guardians and schools can contact the n+1 programme team about participation, attendance, learning progress or implementation.'],
+];
+
+const rasTerms = [
+  ['Eligibility and Registration', 'Participation is subject to the eligibility and programme requirements communicated by n+1. Registration information must be accurate.'],
+  ['Parent/Guardian Consent', 'Participation by children/minors requires appropriate parent or legal guardian consent. Additional consent may be sought for direct contact, photographs, videos or other activities where required.'],
+  ['Student Responsibilities', 'Students are expected to participate regularly, use programme materials responsibly and follow reasonable instructions from the tutor and programme team.'],
+  ['Volunteer Responsibilities', 'Volunteers are expected to attend agreed sessions, communicate respectfully, maintain appropriate boundaries and inform n+1 if they cannot attend or continue.'],
+  ['Child Safeguarding', 'All interactions with children must be appropriate, respectful and programme-related. Volunteers must not seek unnecessary personal information or bypass approved communication channels.'],
+  ['Contact Details', "A child's direct contact details will be shared with a tutor only where the programme arrangement and required parental/guardian consent permit it."],
+  ['Calls and Monitoring', 'RAS uses phone/cloud telephony systems to facilitate sessions and record programme activity. Calls or related records may be reviewed for programme management, quality assurance and safeguarding.'],
+  ['Attendance and Hours', 'Participation and volunteer hours are recorded using available programme records. Supporting information may be requested when automatic logging is unavailable.'],
+  ['Certificates', 'Certificates are issued after required hours and other applicable requirements are verified. Qualifying hours and formats may vary by institution or programme arrangement.'],
+  ['Inactive, Deactivation and Reactivation', 'n+1 may mark a participant inactive when participation stops or repeated non-participation makes a pairing impractical. Participants may request reactivation, subject to programme capacity and requirements.'],
+  ['Conduct', 'Harassment, inappropriate communication, discrimination, bullying, attempts to bypass safeguarding procedures or behaviour that may place a child at risk are not permitted.'],
+  ['Programme Changes', 'n+1 may change schedules, materials, technology, pairing arrangements or processes when required for programme delivery.'],
+  ['Technical Issues', 'Phone networks, internet connectivity, telephony systems and other technology may occasionally fail. n+1 will make reasonable efforts to address such issues but cannot guarantee uninterrupted service.'],
+  ['Privacy and Use of Information', 'Information collected through RAS will be used for registration, communication, monitoring, reporting, safeguarding and related organisational purposes. n+1 will not knowingly use participant information for unrelated commercial purposes.'],
+  ['Withdrawal', 'A participant or participating institution may request withdrawal. n+1 may retain necessary programme records for legitimate organisational, reporting or safeguarding purposes.'],
+  ['Acceptance', "Registration or continued participation indicates that the participant, and where applicable the parent/guardian or institution, has read and agrees to follow these programme terms and n+1's programme instructions."],
+];
+
+const swbTerms = [
+  ['Eligibility and Registration', 'Participation is subject to the eligibility and programme requirements communicated by n+1. Registration information must be accurate and complete.'],
+  ['Parent/Guardian and School Consent', 'Participation by children/minors is subject to appropriate consent and the arrangements agreed with the participating school or community.'],
+  ['Student Responsibilities', 'Students are expected to attend sessions or practice activities regularly, use devices and programme materials responsibly, and follow reasonable instructions from the CF and programme team.'],
+  ['Devices and Application', 'Where a device is provided for programme use, it should be used responsibly and for intended programme activities. Technical or device problems should be reported to the programme team.'],
+  ['Community Facilitator Responsibilities', 'CFs are expected to support students respectfully, maintain accurate programme records, monitor participation and progress, and report concerns to n+1.'],
+  ['Assessments and Monitoring', 'Students may participate in baseline, midline and endline assessments and other monitoring activities used to understand participation and learning progress.'],
+  ['Data and Programme Records', 'n+1 may collect and maintain student, attendance, practice and assessment information needed to operate, monitor and report on the programme.'],
+  ['Child Safeguarding', "All programme interactions must be respectful and appropriate. Any concern about a child's safety or wellbeing should be reported promptly to the programme team."],
+  ['Photography and Video', 'Photographs or videos of children will be taken or used only where appropriate consent has been obtained.'],
+  ['Conduct', 'Bullying, harassment, discrimination, inappropriate behaviour, misuse of programme devices or deliberate manipulation of programme records are not permitted.'],
+  ['Programme Changes', 'n+1 may modify schedules, practice materials, application features, assessment processes or implementation arrangements when required.'],
+  ['Technical Issues', 'The programme may be affected by device, application, network or connectivity problems. n+1 will make reasonable efforts to resolve such issues but cannot guarantee uninterrupted access.'],
+  ['Privacy and Use of Information', 'Information collected through SWB will be used for programme implementation, communication, monitoring, evaluation, reporting, safeguarding and related organisational purposes. n+1 will not knowingly use participant information for unrelated commercial purposes.'],
+  ['Withdrawal or Deactivation', 'A student, parent/guardian or participating school may request withdrawal. n+1 may also deactivate participation for safeguarding, conduct, repeated non-participation or programme-related concerns.'],
+  ['Acceptance', "Registration or continued participation indicates that the participant, and where applicable the parent/guardian or participating institution, has read and agrees to these terms and n+1's programme instructions."],
+];
+
+function toItems(pairs) {
+  return pairs.map(([q, a]) => ({ q, a }));
+}
+
+const groups = [
+  { part: 'Part A', pillLabel: 'Read-a-Story', title: 'Read-a-Story \u2014 FAQs', chipBg: '#FEF3C7', chipColor: '#B45309', icon: 'book', numbered: false, items: toItems(rasFaqs) },
+  { part: 'Part B', pillLabel: 'Solve-with-Bharat', title: 'Solve-with-Bharat \u2014 FAQs', chipBg: '#DBEAFE', chipColor: '#004AAD', icon: 'calc', numbered: false, items: toItems(swbFaqs) },
+  { part: 'Part C', pillLabel: 'RAS Terms', title: 'Read-a-Story \u2014 Terms & Conditions', chipBg: '#DCFCE7', chipColor: '#0F8A5F', icon: 'file', numbered: true, items: toItems(rasTerms) },
+  { part: 'Part D', pillLabel: 'SWB Terms', title: 'Solve-with-Bharat \u2014 Terms & Conditions', chipBg: '#EDE9FE', chipColor: '#6D28D9', icon: 'shield', numbered: true, items: toItems(swbTerms) },
+];
+
+function GroupIcon({ type }) {
+  const common = { width: 19, height: 19, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 2.2, strokeLinecap: 'round', strokeLinejoin: 'round' };
+  if (type === 'book') {
+    return (
+      <svg {...common}>
+        <path d="M12 7v14"></path>
+        <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path>
+      </svg>
+    );
+  }
+  if (type === 'calc') {
+    return (
+      <svg {...common}>
+        <rect width="16" height="20" x="4" y="2" rx="2"></rect>
+        <line x1="8" x2="16" y1="6" y2="6"></line>
+        <line x1="16" x2="16" y1="14" y2="18"></line>
+        <path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path>
+        <path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path>
+      </svg>
+    );
+  }
+  if (type === 'file') {
+    return (
+      <svg {...common}>
+        <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path>
+        <path d="M14 2v4a2 2 0 0 0 2 2h4"></path>
+        <path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path>
+      </svg>
+    );
+  }
   return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-      <line x1="12" y1="5" x2="12" y2="19"></line>
-      <line x1="5" y1="12" x2="19" y2="12"></line>
+    <svg {...common}>
+      <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
     </svg>
   );
 }
 
 function SearchIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
       <circle cx="11" cy="11" r="8"></circle>
-      <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      <path d="m21 21-4.3-4.3"></path>
     </svg>
   );
 }
 
-function GroupIcon() {
+function PlusIcon() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="4" fill="currentColor" stroke="none"></circle>
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M5 12h14"></path>
+      <path d="M12 5v14"></path>
+    </svg>
+  );
+}
+
+function PhoneIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path>
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
     </svg>
   );
 }
 
 export default function Faq() {
   const [query, setQuery] = useState('');
+  const [openKeys, setOpenKeys] = useState(() => new Set());
+
+  const toggle = (key) => {
+    setOpenKeys((prev) => {
+      const next = new Set(prev);
+      if (next.has(key)) next.delete(key);
+      else next.add(key);
+      return next;
+    });
+  };
 
   const q = query.trim().toLowerCase();
   const filteredGroups = useMemo(() => {
     if (!q) return groups;
     return groups
-      .map((g) => ({
-        ...g,
-        items: g.items.filter(
-          (it) => it.q.toLowerCase().includes(q) || it.a.toLowerCase().includes(q)
-        ),
-      }))
+      .map((g) => ({ ...g, items: g.items.filter((it) => it.q.toLowerCase().includes(q) || it.a.toLowerCase().includes(q)) }))
       .filter((g) => g.items.length > 0);
   }, [q]);
 
@@ -155,7 +174,7 @@ export default function Faq() {
 
   return (
     <main>
-      <section className="relative min-h-[70vh] flex items-center overflow-hidden reveal-on-scroll">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 z-0">
           <img src="/assets/students-outdoor-learning-CmrH7eMe.webp" alt="Students learning outdoors" className="w-full h-full object-cover" />
         </div>
@@ -175,121 +194,84 @@ export default function Faq() {
         </div>
       </section>
 
-      <section className="py-20 reveal-on-scroll">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-          <div className="fq-search-wrap">
-            <span className="fq-search-icon"><SearchIcon /></span>
-            <input
-              type="text"
-              className="fq-search"
-              placeholder="Search questions..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              aria-label="Search FAQs"
-            />
-          </div>
-
-          {!query && (
-            <div className="fq-pills">
-              {groups.map((g) => (
-                <a key={g.id} href={`#${g.id}`} className="fq-pill">
-                  {g.title} ({g.items.length})
-                </a>
-              ))}
-            </div>
-          )}
-
-          {filteredGroups.map((g) => (
-            <div key={g.id} id={g.id} className="fq-group" data-fq-group>
-              <div className="fq-group-head">
-                <span className="fq-group-icon" style={{ background: g.chipBg, color: g.chipColor }}>
-                  <GroupIcon />
-                </span>
-                <h2 className="fq-group-title">{g.title}</h2>
-                <span className="fq-group-count">{g.items.length}</span>
-              </div>
-              <div className="fq-list">
-                {g.items.map((it, i) => (
-                  <details key={i} className="fq-item">
-                    <summary>
-                      {it.q}
-                      <span className="fq-item-plus"><PlusIcon /></span>
-                    </summary>
-                    <p>{it.a}</p>
-                  </details>
+      <section className="py-16 bg-white reveal-on-scroll">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="fq-wrap">
+            <div className="fq-tools">
+              <label className="fq-search">
+                <SearchIcon />
+                <input
+                  type="search"
+                  placeholder="Search questions and terms\u2026"
+                  aria-label="Search questions and terms"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+              </label>
+              <div className="fq-pills">
+                {groups.map((g, gi) => (
+                  <a key={gi} className="fq-pill" href={`#fq-g${gi}`}>
+                    {g.pillLabel}<b>{g.items.length}</b>
+                  </a>
                 ))}
               </div>
             </div>
-          ))}
 
-          {!anyResults && (
-            <div className="fq-empty" style={{ display: 'block' }}>
-              <p className="mb-3">No questions matched "{query}".</p>
-              <a href="/contact" className="fq-contact-btn fq-contact-btn--ghost">Ask us directly</a>
-            </div>
-          )}
+            {!anyResults && (
+              <p className="fq-empty">
+                Nothing matches that search. Try a different word, or <a href="/contact">ask us directly</a>.
+              </p>
+            )}
 
-          <div className="fq-hb">
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">Volunteer Handbook</h2>
-            <h3>Profile of a Read-a-story Student</h3>
-            <p className="text-gray-700 leading-relaxed">
-              The majority of our students come from Zilla Parishad schools in remote Maharashtra areas. These schools often have 400+ students but only 4-5 teachers. Students are young and may not fully understand education's significance, with parents unaware of educational opportunities. With your help, these students can access otherwise unreachable opportunities.
-            </p>
-            <h3>Challenges Faced by Students</h3>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li>Limited network coverage and connectivity issues</li>
-              <li>Inconsistent electricity supply affecting phone charging</li>
-              <li>Only one family phone, often taken by working parents</li>
-              <li>First-generation learners with limited English exposure</li>
-              <li>Potential lack of parental motivation for education</li>
-              <li>Parents engaged in daily wage work, farming, or labor</li>
-              <li>Students eager to learn despite unsupportive environments</li>
-            </ul>
-            <h3>How Your Patience and Dedication Make a Difference</h3>
-            <ul className="list-disc list-inside space-y-2 text-gray-700">
-              <li><strong>Building Trust:</strong> Your consistent presence develops trust and strong bonds</li>
-              <li><strong>English Development:</strong> Dedicated efforts improve language skills and expand horizons</li>
-              <li><strong>Parental Engagement:</strong> Motivate parents by demonstrating education's importance</li>
-              <li><strong>Consistency:</strong> Regular volunteering establishes routines and reinforces commitment</li>
-              <li><strong>Overcoming Challenges:</strong> Your dedication inspires students to overcome obstacles</li>
-            </ul>
-            <h3>Teaching Guidelines</h3>
-            <div className="space-y-3">
-              <div>
-                <p className="font-medium text-gray-800 mb-1">Pronunciation, Punctuation, and Intonation:</p>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 ml-4">
-                  <li>Ask students to read aloud and help them identify mistakes</li>
-                  <li>Focus on pronunciation, sentence rhythm, and proper intonation</li>
-                  <li>Allocate time for discussion and feedback at session end</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-gray-800 mb-1">Homework:</p>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 ml-4">
-                  <li>Ask students to write summaries of what they've read</li>
-                  <li>Have them write new words 5 times with local language meanings</li>
-                  <li>Encourage review of written work for vocabulary retention</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-gray-800 mb-1">Reading Session Without Books:</p>
-                <ul className="list-disc list-inside space-y-1 text-gray-700 ml-4">
-                  <li>Sing nursery rhymes focusing on pronunciation</li>
-                  <li>Teach colors, vegetables, festivals, and village life concepts</li>
-                  <li>Play language games: "Give me 5 words starting with B"</li>
-                  <li>Encourage active participation in a supportive environment</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+            {filteredGroups.map((g, gi) => (
+              <section key={gi} className="fq-group" id={`fq-g${gi}`}>
+                <header className="fq-group__h">
+                  <span className="fq-group__ic" style={{ background: g.chipBg, color: g.chipColor }}>
+                    <GroupIcon type={g.icon} />
+                  </span>
+                  <div className="fq-group__meta">
+                    <span className="fq-group__part">{g.part}</span>
+                    <h3 className="fq-group__t">{g.title}</h3>
+                  </div>
+                  <span className="fq-group__n">{g.items.length}</span>
+                </header>
+                <div className="fq-list">
+                  {g.items.map((it, i) => {
+                    const key = `${gi}-${i}`;
+                    const open = openKeys.has(key);
+                    const state = open ? 'open' : 'closed';
+                    return (
+                      <div key={i} className="fq-item" data-state={state}>
+                        <button
+                          type="button"
+                          className="fq-q"
+                          aria-expanded={open}
+                          aria-controls={`fq-a-${key}`}
+                          data-state={state}
+                          onClick={() => toggle(key)}
+                        >
+                          <span className="fq-q__t">
+                            {g.numbered && <span className="fq-q__num">{i + 1}.</span>}
+                            {it.q}
+                          </span>
+                          <span className="fq-q__i"><PlusIcon /></span>
+                        </button>
+                        <div className="fq-a" id={`fq-a-${key}`} role="region" data-state={state} hidden={!open}>
+                          <p>{it.a}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            ))}
 
-          <div className="rounded-lg border text-card-foreground shadow-sm bg-primary/5 border-primary/20 mt-8">
-            <div className="p-6 pt-6 text-center">
-              <h3 className="text-xl font-semibold mb-2">Still have questions?</h3>
-              <p className="text-muted-foreground mb-4">Contact our support team for additional help and guidance.</p>
-              <div className="fq-contact-actions">
-                <a href="tel:+917083490865" className="fq-contact-btn">Call +91 70834 90865</a>
-                <a href="mailto:info@nplusone.org.in" className="fq-contact-btn fq-contact-btn--ghost">info@nplusone.org.in</a>
+            <div className="fq-help">
+              <h3 className="fq-help__t">Still have questions?</h3>
+              <p className="fq-help__s">Our team answers volunteer queries within a working day.</p>
+              <div className="fq-help__row">
+                <a className="fq-help__btn" href="tel:+917083490865"><PhoneIcon />+91 70834 90865</a>
+                <a className="fq-help__btn fq-help__btn--ghost" href="mailto:admin@readastory.org.in"><MailIcon />admin@readastory.org.in</a>
               </div>
             </div>
           </div>
