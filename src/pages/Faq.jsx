@@ -208,8 +208,8 @@ export default function Faq() {
                 <SearchIcon />
                 <input
                   type="search"
-                  placeholder="Search questions and terms\u2026"
-                  aria-label="Search questions and terms"
+                  placeholder="Search your questions"
+                  aria-label="Search your questions"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
