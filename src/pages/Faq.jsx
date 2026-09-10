@@ -152,6 +152,8 @@ function MailIcon() {
 export default function Faq() {
   const [query, setQuery] = useState('');
   const [openKeys, setOpenKeys] = useState(() => new Set());
+  const [expandedGroups, setExpandedGroups] = useState(() => new Set());
+  const PREVIEW_COUNT = 5;
 
   const toggle = (key) => {
     setOpenKeys((prev) => {
@@ -160,6 +162,10 @@ export default function Faq() {
       else next.add(key);
       return next;
     });
+  };
+
+  const expandGroup = (gi) => {
+    setExpandedGroups((prev) => new Set(prev).add(gi));
   };
 
   const q = query.trim().toLowerCase();
@@ -223,7 +229,11 @@ export default function Faq() {
               </p>
             )}
 
-            {filteredGroups.map((g, gi) => (
+            {filteredGroups.map((g, gi) => {
+              const isExpanded = expandedGroups.has(gi) || !!q;
+              const visibleItems = isExpanded ? g.items : g.items.slice(0, PREVIEW_COUNT);
+              const remaining = g.items.length - visibleItems.length;
+              return (
               <section key={gi} className="fq-group" id={`fq-g${gi}`}>
                 <header className="fq-group__h">
                   <span className="fq-group__ic" style={{ background: g.chipBg, color: g.chipColor }}>
@@ -236,7 +246,7 @@ export default function Faq() {
                   <span className="fq-group__n">{g.items.length}</span>
                 </header>
                 <div className="fq-list">
-                  {g.items.map((it, i) => {
+                  {visibleItems.map((it, i) => {
                     const key = `${gi}-${i}`;
                     const open = openKeys.has(key);
                     const state = open ? 'open' : 'closed';
@@ -263,8 +273,14 @@ export default function Faq() {
                     );
                   })}
                 </div>
+                {remaining > 0 && (
+                  <button type="button" className="fq-showmore" onClick={() => expandGroup(gi)}>
+                    Show {remaining} more
+                  </button>
+                )}
               </section>
-            ))}
+              );
+            })}
 
             <div className="fq-help">
               <h3 className="fq-help__t">Still have questions?</h3>
