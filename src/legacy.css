@@ -480,3 +480,5 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .mt-10{margin-top:2.5rem}
 .hover\:bg-\[\#FEB344\]:hover{background-color:#FEB344}
 .hover\:text-\[\#004AAD\]:hover{color:#004AAD}
+.ras-video__wrap{position:relative}
+.ras-video__dur{position:absolute;right:10px;top:10px;background:rgba(0,0,0,.72);color:#fff;font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;letter-spacing:.02em;pointer-events:none;z-index:2}
