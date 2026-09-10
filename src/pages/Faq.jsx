@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 
 const rasFaqs = [
-  ['What is Read-a-Story (RAS)?', "RAS is n+1 Social Foundation\u2019s English reading programme. Children read storybooks while a volunteer tutor supports them through regular one-to-one phone sessions."],
+  ['What is Read-a-story (RAS)?', "RAS is n+1 Social Foundation\u2019s English reading programme. Children read storybooks while a volunteer tutor supports them through regular one-to-one phone sessions."],
   ['Who can participate?', 'Children who need support with English reading can participate. Volunteers, schools, colleges, companies and institutions can also partner with the programme.'],
   ['How does a session work?', "The child reads from a physical storybook/textbook while the tutor has a digital copy. The tutor calls through the programme's phone/telephony system and guides the child through reading and conversation."],
   ['Who are the tutors?', 'Tutors are volunteers who register through institutions, organisations or individually.'],
@@ -71,9 +71,9 @@ function toItems(pairs) {
 }
 
 const groups = [
-  { part: 'Part A', pillLabel: 'Read-a-Story', title: 'Read-a-Story \u2014 FAQs', chipBg: '#FEF3C7', chipColor: '#B45309', icon: 'book', numbered: false, items: toItems(rasFaqs) },
+  { part: 'Part A', pillLabel: 'Read-a-story', title: 'Read-a-story \u2014 FAQs', chipBg: '#FEF3C7', chipColor: '#B45309', icon: 'book', numbered: false, items: toItems(rasFaqs) },
   { part: 'Part B', pillLabel: 'Solve-with-Bharat', title: 'Solve-with-Bharat \u2014 FAQs', chipBg: '#DBEAFE', chipColor: '#004AAD', icon: 'calc', numbered: false, items: toItems(swbFaqs) },
-  { part: 'Part C', pillLabel: 'RAS Terms', title: 'Read-a-Story \u2014 Terms & Conditions', chipBg: '#DCFCE7', chipColor: '#0F8A5F', icon: 'file', numbered: true, items: toItems(rasTerms) },
+  { part: 'Part C', pillLabel: 'RAS Terms', title: 'Read-a-story \u2014 Terms & Conditions', chipBg: '#DCFCE7', chipColor: '#0F8A5F', icon: 'file', numbered: true, items: toItems(rasTerms) },
   { part: 'Part D', pillLabel: 'SWB Terms', title: 'Solve-with-Bharat \u2014 Terms & Conditions', chipBg: '#EDE9FE', chipColor: '#6D28D9', icon: 'shield', numbered: true, items: toItems(swbTerms) },
 ];
 
@@ -194,7 +194,7 @@ export default function Faq() {
               FAQs &amp; Programme Terms
             </h1>
             <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
-              Everything about Read-a-Story and Solve-with-Bharat, in one place
+              Everything about Read-a-story and Solve-with-Bharat, in one place
             </p>
           </div>
         </div>
