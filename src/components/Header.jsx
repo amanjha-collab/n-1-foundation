@@ -113,7 +113,7 @@ function NavDropdown({ label, items, isActive, closeMobile }) {
         </svg>
       </button>
       {open && (
-        <div className="nv-pop">
+        <div className="absolute nv-pop">
           <div className="nv-card">
             {items.map((item) => (
               <Link
