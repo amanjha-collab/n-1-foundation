@@ -32,7 +32,7 @@ export default function SuccessStories() {
     <main>
       <section className="relative min-h-[60vh] flex items-center overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 z-0">
-          <img src="/assets/moments-group-photo-school.webp" alt="Students and facilitator" className="w-full h-full object-cover" />
+          <img src="/assets/success-stories-hero-officer-student.webp" alt="Officer speaking with a student" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/40 z-[1]"></div>
         <div className="absolute bottom-0 left-0 right-0 w-full h-[85px] overflow-hidden leading-[0] z-[2] pointer-events-none">
