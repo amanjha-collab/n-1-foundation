@@ -10,7 +10,8 @@ const options = {
     if (node.type === 'tag' && node.name === 'a') {
       const href = node.attribs?.href || '';
       const hasDownload = node.attribs?.download !== undefined;
-      const isInternal = href.startsWith('/') && !href.startsWith('//') && !hasDownload;
+      const opensNewTab = node.attribs?.target === '_blank';
+      const isInternal = href.startsWith('/') && !href.startsWith('//') && !hasDownload && !opensNewTab;
       if (isInternal && !href.startsWith('/#')) {
         const { href: _omit, class: className, ...rest } = node.attribs;
         return (

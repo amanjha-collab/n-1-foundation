@@ -112,28 +112,30 @@ function NavDropdown({ label, items, isActive, closeMobile }) {
           <path d="m6 9 6 6 6-6"></path>
         </svg>
       </button>
-      <div className="nv-pop">
-        <div className="nv-card">
-          {items.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={`nv-item${pathname === item.to ? ' nv-item--on' : ''}`}
-              onClick={() => {
-                setOpen(false);
-                if (closeMobile) closeMobile();
-              }}
-            >
-              {item.chipBg && (
-                <span className="nv-ic" style={{ background: item.chipBg, color: item.chipColor }}>
-                  <item.Icon />
-                </span>
-              )}
-              {item.label}
-            </Link>
-          ))}
+      {open && (
+        <div className="nv-pop">
+          <div className="nv-card">
+            {items.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className={`nv-item${pathname === item.to ? ' nv-item--on' : ''}`}
+                onClick={() => {
+                  setOpen(false);
+                  if (closeMobile) closeMobile();
+                }}
+              >
+                {item.chipBg && (
+                  <span className="nv-ic" style={{ background: item.chipBg, color: item.chipColor }}>
+                    <item.Icon />
+                  </span>
+                )}
+                {item.label}
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
