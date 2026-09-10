@@ -96,19 +96,19 @@ function NavDropdown({ label, items, isActive, closeMobile }) {
 
   return (
     <div
-      className={`nv-wrap${open ? ' is-open' : ''}`}
+      className={`relative nv-wrap${open ? ' is-open' : ''}`}
       ref={ref}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
       <button
         type="button"
-        className={`nv-trigger${isActive ? ' is-active' : ''}`}
+        className={`flex items-center gap-1 text-sm font-medium transition-colors border-b-2 pb-1 ${isActive ? 'text-[#FEB344] border-[#FEB344]' : 'text-[#004AAD] border-transparent hover:text-[#FEB344]'}`}
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
         {label}
-        <svg className="nv-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="transition-transform" style={{ transform: open ? 'rotate(180deg)' : 'none' }}>
           <path d="m6 9 6 6 6-6"></path>
         </svg>
       </button>

@@ -473,8 +473,6 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .animate-fade-in{animation:fadeIn .8s ease-out forwards}
 
 /* nav dropdown - mobile accordion label + chevron + misc */
-.nv-chevron{transition:transform .16s ease}
-.nv-wrap.is-open .nv-chevron{transform:rotate(180deg)}
 .nv-mobile-group{padding:4px 0}
 .nv-mobile-label{font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;padding:4px 0;background:none;border:none;cursor:pointer;display:block;width:100%;text-align:left}
 @media(min-width:1536px){.\32xl\:px-\[48px\]{padding-left:48px;padding-right:48px}}
