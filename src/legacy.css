@@ -479,7 +479,6 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .nv-mobile-group{padding:4px 0}
 .nv-mobile-label{font-size:12px;font-weight:600;color:#6b7280;text-transform:uppercase;letter-spacing:.04em;padding:4px 0;background:none;border:none;cursor:pointer;display:block;width:100%;text-align:left}
 @media(min-width:1536px){.\32xl\:px-\[48px\]{padding-left:48px;padding-right:48px}}
-.min-h-\[60vh\]{min-height:60vh}
 .mt-10{margin-top:2.5rem}
 .hover\:bg-\[\#FEB344\]:hover{background-color:#FEB344}
 .hover\:text-\[\#004AAD\]:hover{color:#004AAD}

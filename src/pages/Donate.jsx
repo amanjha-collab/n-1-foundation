@@ -131,7 +131,7 @@ export default function Donate() {
   return (
     <main>
       {/* Hero — preserved from the original design */}
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src="/assets/donate-hero-learning-sparks.webp" alt="Children walking together with school bags" className="w-full h-full object-cover" />
         </div>

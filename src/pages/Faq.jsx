@@ -180,7 +180,7 @@ export default function Faq() {
 
   return (
     <main>
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden reveal-on-scroll">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 z-0">
           <img src="/assets/students-outdoor-learning-CmrH7eMe.webp" alt="Students learning outdoors" className="w-full h-full object-cover" />
         </div>

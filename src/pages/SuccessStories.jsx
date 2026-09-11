@@ -30,7 +30,7 @@ export default function SuccessStories() {
 
   return (
     <main>
-      <section className="relative min-h-[60vh] flex items-center overflow-hidden reveal-on-scroll">
+      <section className="relative min-h-[85vh] flex items-center overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 z-0">
           <img src="/assets/success-stories-hero-officer-student.webp" alt="Officer speaking with a student" className="w-full h-full object-cover" />
         </div>
