@@ -131,7 +131,7 @@ export default function Donate() {
   return (
     <main>
       {/* Hero — preserved from the original design */}
-      <section className="relative min-h-[85vh] flex items-center overflow-hidden">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img src="/assets/donate-hero-learning-sparks.webp" alt="Children walking together with school bags" className="w-full h-full object-cover" />
         </div>
@@ -141,7 +141,7 @@ export default function Donate() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-[#FEB344] animate-fade-in">Where Learning Sparks Possibility</h1>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-white animate-fade-in">Where Learning Sparks Possibility</h1>
             <p className="text-lg sm:text-xl lg:text-2xl text-white leading-relaxed max-w-3xl mx-auto italic">From stories that inspire imagination to math skills that build confidence, we help children unlock their potential and shape their own futures.</p>
           </div>
         </div>

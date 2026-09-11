@@ -40,8 +40,8 @@ export default function SuccessStories() {
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-white animate-fade-in">Success Stories</h1>
-            <p className="text-lg sm:text-xl text-white leading-relaxed max-w-3xl mx-auto">Amazing children, amazing stories: how volunteers and communities change one child's future at a time.</p>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-white animate-fade-in">Success Stories</h1>
+            <p className="text-lg sm:text-xl lg:text-2xl text-white leading-relaxed max-w-3xl mx-auto">Amazing children, amazing stories: how volunteers and communities change one child's future at a time.</p>
           </div>
         </div>
       </section>

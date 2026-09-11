@@ -180,20 +180,20 @@ export default function Faq() {
 
   return (
     <main>
-      <section className="relative min-h-[38vh] flex items-center overflow-hidden reveal-on-scroll">
+      <section className="relative min-h-[60vh] flex items-center overflow-hidden reveal-on-scroll">
         <div className="absolute inset-0 z-0">
           <img src="/assets/students-outdoor-learning-CmrH7eMe.webp" alt="Students learning outdoors" className="w-full h-full object-cover" />
         </div>
         <div className="absolute inset-0 bg-black/40 z-[1]"></div>
-        <div className="absolute bottom-0 left-0 right-0 w-full h-[60px] overflow-hidden leading-[0] z-[2] pointer-events-none">
+        <div className="absolute bottom-0 left-0 right-0 w-full h-[85px] overflow-hidden leading-[0] z-[2] pointer-events-none">
           <img loading="lazy" src="/assets/wave-divider.webp" alt="" className="w-full h-full object-cover" />
         </div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="max-w-3xl mx-auto text-center space-y-3">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-white animate-fade-in">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-dm-serif font-normal leading-tight text-white animate-fade-in">
               FAQs &amp; Programme Terms
             </h1>
-            <p className="text-base sm:text-lg text-white/90 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl mx-auto">
               Everything about Read-a-story and Solve-with-Bharat, in one place
             </p>
           </div>
