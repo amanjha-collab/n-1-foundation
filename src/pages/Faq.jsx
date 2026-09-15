@@ -152,8 +152,7 @@ function MailIcon() {
 export default function Faq() {
   const [query, setQuery] = useState('');
   const [openKeys, setOpenKeys] = useState(() => new Set());
-  const [expandedGroups, setExpandedGroups] = useState(() => new Set());
-  const PREVIEW_COUNT = 5;
+  const [activeTab, setActiveTab] = useState(0);
 
   const toggle = (key) => {
     setOpenKeys((prev) => {
@@ -164,19 +163,18 @@ export default function Faq() {
     });
   };
 
-  const expandGroup = (gi) => {
-    setExpandedGroups((prev) => new Set(prev).add(gi));
-  };
-
   const q = query.trim().toLowerCase();
-  const filteredGroups = useMemo(() => {
-    if (!q) return groups;
-    return groups
-      .map((g) => ({ ...g, items: g.items.filter((it) => it.q.toLowerCase().includes(q) || it.a.toLowerCase().includes(q)) }))
-      .filter((g) => g.items.length > 0);
-  }, [q]);
+  const isSearching = q.length > 0;
 
-  const anyResults = filteredGroups.length > 0;
+  const searchResults = useMemo(() => {
+    if (!isSearching) return [];
+    return groups
+      .map((g, gi) => ({ ...g, gi, items: g.items.filter((it) => it.q.toLowerCase().includes(q) || it.a.toLowerCase().includes(q)) }))
+      .filter((g) => g.items.length > 0);
+  }, [q, isSearching]);
+
+  const visibleGroups = isSearching ? searchResults : [{ ...groups[activeTab], gi: activeTab }];
+  const anyResults = visibleGroups.length > 0;
 
   return (
     <main>
@@ -214,11 +212,21 @@ export default function Faq() {
                   onChange={(e) => setQuery(e.target.value)}
                 />
               </label>
-              <div className="fq-pills">
+              <div className="fq-tabs" role="tablist">
                 {groups.map((g, gi) => (
-                  <a key={gi} className="fq-pill" href={`#fq-g${gi}`}>
+                  <button
+                    key={gi}
+                    type="button"
+                    role="tab"
+                    aria-selected={!isSearching && activeTab === gi}
+                    className={`fq-tab${!isSearching && activeTab === gi ? ' fq-tab--active' : ''}`}
+                    onClick={() => {
+                      setActiveTab(gi);
+                      setQuery('');
+                    }}
+                  >
                     {g.pillLabel}<b>{g.items.length}</b>
-                  </a>
+                  </button>
                 ))}
               </div>
             </div>
@@ -229,10 +237,8 @@ export default function Faq() {
               </p>
             )}
 
-            {filteredGroups.map((g, gi) => {
-              const isExpanded = expandedGroups.has(gi) || !!q;
-              const visibleItems = isExpanded ? g.items : g.items.slice(0, PREVIEW_COUNT);
-              const remaining = g.items.length - visibleItems.length;
+            {visibleGroups.map((g) => {
+              const gi = g.gi;
               return (
               <section key={gi} className="fq-group" id={`fq-g${gi}`}>
                 <header className="fq-group__h">
@@ -246,7 +252,7 @@ export default function Faq() {
                   <span className="fq-group__n">{g.items.length}</span>
                 </header>
                 <div className="fq-list">
-                  {visibleItems.map((it, i) => {
+                  {g.items.map((it, i) => {
                     const key = `${gi}-${i}`;
                     const open = openKeys.has(key);
                     const state = open ? 'open' : 'closed';
@@ -273,11 +279,6 @@ export default function Faq() {
                     );
                   })}
                 </div>
-                {remaining > 0 && (
-                  <button type="button" className="fq-showmore" onClick={() => expandGroup(gi)}>
-                    Show {remaining} more
-                  </button>
-                )}
               </section>
               );
             })}
