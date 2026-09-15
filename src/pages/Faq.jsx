@@ -208,7 +208,7 @@ function Group({ g, searching }) {
             onClick={() => setExpanded(!expanded)}
           >
             {expanded ? 'Show fewer' : `Show all ${g.items.length}`}
-            <span>\u25be</span>
+            <span>{'\u25be'}</span>
           </button>
         </div>
       )}
