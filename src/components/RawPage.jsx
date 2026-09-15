@@ -1,6 +1,7 @@
 import parse, { domToReact } from 'html-react-parser';
 import { Link } from 'react-router-dom';
 import VideoCarousel from './VideoCarousel.jsx';
+import HeroCarousel from './HeroCarousel.jsx';
 
 // Renders a captured page body (raw HTML) faithfully, but upgrades internal
 // anchors to React Router <Link>s so navigation stays client-side (no full
@@ -9,6 +10,7 @@ import VideoCarousel from './VideoCarousel.jsx';
 // used in the raw HTML to substitute in a real interactive React component.
 const embeds = {
   'video-carousel': VideoCarousel,
+  'hero-carousel': HeroCarousel,
 };
 
 const options = {

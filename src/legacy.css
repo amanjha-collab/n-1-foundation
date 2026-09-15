@@ -529,9 +529,27 @@ header.sticky{position:sticky!important;top:0;z-index:99}
    whenever there's room - deliberately not using grid/media-query
    variant classes, to rule out any breakpoint-matching ambiguity)
    ============================================================ */
-.ar-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.5rem}
-.ar-grid > div{min-width:0}
-@media(max-width:640px){.ar-grid{grid-template-columns:1fr;gap:1.25rem}}
+.ar-row{display:flex;flex-wrap:wrap;justify-content:center;gap:22px;max-width:1080px;margin:0 auto 64px}
+.ar-card{flex:1 1 300px;min-width:280px;max-width:420px;display:flex;flex-direction:column;position:relative;background:#fff;border:1px solid rgba(0,74,173,.10);border-radius:16px;padding:24px 24px 22px;box-shadow:0 10px 26px -20px rgba(0,74,173,.26);transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
+@media(min-width:900px){.ar-row{flex-wrap:nowrap}.ar-card{flex:1 1 0;min-width:0;max-width:none}}
+.ar-card:hover{transform:translateY(-4px);border-color:rgba(254,179,68,.55);box-shadow:0 22px 40px -22px rgba(0,74,173,.30)}
+.ar-card--new{border-color:rgba(0,74,173,.22)}
+.ar-card__h{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.ar-card__ic{display:flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:11px;background:#FFF3DC;color:#B45309}
+.ar-card__tag{background:#004AAD;color:#fff;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:5px 11px}
+.ar-card__yr{font-size:22px;font-weight:800;color:#004AAD;margin:0 0 8px;letter-spacing:-.015em;font-variant-numeric:tabular-nums}
+.ar-card__d{font-size:13.5px;line-height:1.7;color:#5b6672;margin:0 0 20px;flex:1}
+.ar-card__acts{display:flex;gap:9px;margin-top:auto}
+.ar-btn{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:7px;background:#004AAD;color:#fff;border:1.5px solid #004AAD;border-radius:9px;padding:10px 12px;font-size:13px;font-weight:600;font-family:inherit;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background .2s ease,color .2s ease,transform .18s ease}
+.ar-btn:hover{background:transparent;color:#004AAD}
+.ar-btn:active{transform:scale(.97)}
+.ar-btn--ghost{background:#fff;color:#004AAD}
+.ar-btn--ghost:hover{background:#004AAD;color:#fff}
+.ar-btn[disabled]{background:#F1F5F9;border-color:rgba(0,74,173,.12);color:#94a3b8;cursor:not-allowed}
+.ar-btn[disabled]:hover{background:#F1F5F9;color:#94a3b8}
+.ar-btn[disabled]:active{transform:none}
+.ar-card__acts[data-pending]{flex-wrap:wrap}
+.ar-card__acts[data-pending]:after{content:"PDFs coming soon";display:block;width:100%;order:2;font-size:11.5px;color:#94a3b8;text-align:center;margin-top:2px}
 
 /* ============================================================
    HOME PAGE - "Our Programs" cards (photo-first, badge + caption)
