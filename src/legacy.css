@@ -524,13 +524,3 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .rs-stat__l{display:block;font-size:12px;color:#6b7280;margin-top:2px;line-height:1.35}
 .rs-btn{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;background:#004AAD;color:#fff;border-radius:8px;padding:12px 22px;font-size:14.5px;font-weight:700;text-decoration:none;transition:background .2s ease}
 .rs-btn:hover{background:#003a8c}
-
-/* ============================================================
-   80G CERTIFICATE CARD (Resources page)
-   ============================================================ */
-.og-card{max-width:1120px;margin:0 auto;background:#fff;border:1px solid rgba(0,74,173,.10);border-radius:18px;padding:28px 30px;box-shadow:0 12px 28px -18px rgba(0,74,173,.24);display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.og-card__ic{display:flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:12px;background:#FFF3DC;color:#F59E0B;margin-bottom:10px}
-.og-card__title{font-size:19px;font-weight:700;color:#111827;margin:0 0 8px}
-.og-card__text{font-size:14px;line-height:1.6;color:#5b6672;margin:0 0 16px;max-width:60ch}
-.og-btn{display:inline-flex;align-items:center;gap:8px;background:#004AAD;color:#fff;border-radius:8px;padding:11px 20px;font-size:14px;font-weight:700;text-decoration:none;transition:background .2s ease}
-.og-btn:hover{background:#003a8c}
