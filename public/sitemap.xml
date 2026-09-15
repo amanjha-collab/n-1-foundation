@@ -16,6 +16,16 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.nplusone.org.in/programs/read-a-story</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.nplusone.org.in/programs/solve-with-bharat</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.nplusone.org.in/get-involved</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -26,12 +36,17 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.nplusone.org.in/testimony</loc>
+    <loc>https://www.nplusone.org.in/resources</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.nplusone.org.in/resources</loc>
+    <loc>https://www.nplusone.org.in/success-stories</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nplusone.org.in/testimony</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -44,5 +59,10 @@
     <loc>https://www.nplusone.org.in/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.nplusone.org.in/sitemap</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

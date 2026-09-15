@@ -59,9 +59,12 @@ export default function Footer() {
         </div>
 
         <div className="py-6 border-t border-white/20">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-2 md:gap-0">
             <p className="text-white/80 text-sm">© 2025 n+1 Social Foundation. All rights reserved.</p>
-            <p className="text-white/80 text-sm">Powered by <a href="https://aidenai.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">Aiden AI</a> — Designed to drive impact.</p>
+            <div className="flex items-center gap-4">
+              <Link to="/sitemap" className="text-white/80 hover:text-white transition-colors text-sm underline">Sitemap</Link>
+              <p className="text-white/80 text-sm">Powered by <a href="https://aidenai.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">Aiden AI</a> — Designed to drive impact.</p>
+            </div>
           </div>
         </div>
       </div>

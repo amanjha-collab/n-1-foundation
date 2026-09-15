@@ -70,11 +70,13 @@ function toItems(pairs) {
   return pairs.map(([q, a]) => ({ q, a }));
 }
 
+const VISIBLE = 10;
+
 const groups = [
-  { part: 'Part A', pillLabel: 'Read-a-story', title: 'Read-a-story \u2014 FAQs', chipBg: '#FEF3C7', chipColor: '#B45309', icon: 'book', numbered: false, items: toItems(rasFaqs) },
-  { part: 'Part B', pillLabel: 'Solve-with-Bharat', title: 'Solve-with-Bharat \u2014 FAQs', chipBg: '#DBEAFE', chipColor: '#004AAD', icon: 'calc', numbered: false, items: toItems(swbFaqs) },
-  { part: 'Part C', pillLabel: 'RAS Terms', title: 'Read-a-story \u2014 Terms & Conditions', chipBg: '#DCFCE7', chipColor: '#0F8A5F', icon: 'file', numbered: true, items: toItems(rasTerms) },
-  { part: 'Part D', pillLabel: 'SWB Terms', title: 'Solve-with-Bharat \u2014 Terms & Conditions', chipBg: '#EDE9FE', chipColor: '#6D28D9', icon: 'shield', numbered: true, items: toItems(swbTerms) },
+  { id: 0, tab: 'Read-a-story', part: 'Part A', title: 'Read-a-story \u2014 FAQs', bg: '#FEF3C7', fg: '#B45309', icon: 'book', numbered: false, items: toItems(rasFaqs) },
+  { id: 1, tab: 'Solve-with-Bharat', part: 'Part B', title: 'Solve-with-Bharat \u2014 FAQs', bg: '#DBEAFE', fg: '#004AAD', icon: 'calc', numbered: false, items: toItems(swbFaqs) },
+  { id: 2, tab: 'RAS Terms', part: 'Part C', title: 'Read-a-story \u2014 Terms & Conditions', bg: '#DCFCE7', fg: '#0F8A5F', icon: 'file', numbered: true, items: toItems(rasTerms) },
+  { id: 3, tab: 'SWB Terms', part: 'Part D', title: 'Solve-with-Bharat \u2014 Terms & Conditions', bg: '#EDE9FE', fg: '#6D28D9', icon: 'shield', numbered: true, items: toItems(swbTerms) },
 ];
 
 function GroupIcon({ type }) {
@@ -92,7 +94,6 @@ function GroupIcon({ type }) {
       <svg {...common}>
         <rect width="16" height="20" x="4" y="2" rx="2"></rect>
         <line x1="8" x2="16" y1="6" y2="6"></line>
-        <line x1="16" x2="16" y1="14" y2="18"></line>
         <path d="M16 10h.01"></path><path d="M12 10h.01"></path><path d="M8 10h.01"></path>
         <path d="M12 14h.01"></path><path d="M8 14h.01"></path><path d="M12 18h.01"></path><path d="M8 18h.01"></path>
       </svg>
@@ -149,32 +150,86 @@ function MailIcon() {
   );
 }
 
+function Item({ q, a, n }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="fq-item" data-state={open ? 'open' : 'closed'}>
+      <button
+        type="button"
+        className="fq-q"
+        data-state={open ? 'open' : 'closed'}
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+      >
+        <span className="fq-q__t">
+          {n && <span className="fq-q__num">{n}.</span>}
+          {q}
+        </span>
+        <span className="fq-q__i"><PlusIcon /></span>
+      </button>
+      {open && (
+        <div className="fq-a" role="region">
+          <p>{a}</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Group({ g, searching }) {
+  const [expanded, setExpanded] = useState(false);
+  const showAll = expanded || searching;
+  const shown = showAll ? g.items : g.items.slice(0, VISIBLE);
+
+  return (
+    <section className="fq-group" id={`fq-g${g.id}`} role="tabpanel">
+      <header className="fq-group__h">
+        <span className="fq-group__ic" style={{ background: g.bg, color: g.fg }}>
+          <GroupIcon type={g.icon} />
+        </span>
+        <div className="fq-group__meta">
+          <span className="fq-group__part">{g.part}</span>
+          <h3 className="fq-group__t">{g.title}</h3>
+        </div>
+      </header>
+
+      <div className="fq-list">
+        {shown.map((it, i) => (
+          <Item key={it.q} q={it.q} a={it.a} n={g.numbered ? i + 1 : null} />
+        ))}
+      </div>
+
+      {!searching && g.items.length > VISIBLE && (
+        <div className="fq-more">
+          <button
+            type="button"
+            className="fq-more__btn"
+            data-open={expanded}
+            onClick={() => setExpanded(!expanded)}
+          >
+            {expanded ? 'Show fewer' : `Show all ${g.items.length}`}
+            <span>\u25be</span>
+          </button>
+        </div>
+      )}
+    </section>
+  );
+}
+
 export default function Faq() {
+  const [active, setActive] = useState(0);
   const [query, setQuery] = useState('');
-  const [openKeys, setOpenKeys] = useState(() => new Set());
-  const [activeTab, setActiveTab] = useState(0);
-
-  const toggle = (key) => {
-    setOpenKeys((prev) => {
-      const next = new Set(prev);
-      if (next.has(key)) next.delete(key);
-      else next.add(key);
-      return next;
-    });
-  };
-
   const q = query.trim().toLowerCase();
-  const isSearching = q.length > 0;
+  const searching = q.length > 0;
 
-  const searchResults = useMemo(() => {
-    if (!isSearching) return [];
+  const filtered = useMemo(() => {
     return groups
-      .map((g, gi) => ({ ...g, gi, items: g.items.filter((it) => it.q.toLowerCase().includes(q) || it.a.toLowerCase().includes(q)) }))
-      .filter((g) => g.items.length > 0);
-  }, [q, isSearching]);
-
-  const visibleGroups = isSearching ? searchResults : [{ ...groups[activeTab], gi: activeTab }];
-  const anyResults = visibleGroups.length > 0;
+      .map((g) => ({
+        ...g,
+        items: q ? g.items.filter((it) => (it.q + ' ' + it.a).toLowerCase().includes(q)) : g.items,
+      }))
+      .filter((g) => (searching ? g.items.length > 0 : g.id === active));
+  }, [q, searching, active]);
 
   return (
     <main>
@@ -198,7 +253,7 @@ export default function Faq() {
         </div>
       </section>
 
-      <section className="py-10 bg-white reveal-on-scroll">
+      <section className="py-16 bg-white reveal-on-scroll">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="fq-wrap">
             <div className="fq-tools">
@@ -206,82 +261,44 @@ export default function Faq() {
                 <SearchIcon />
                 <input
                   type="search"
+                  value={query}
                   placeholder="Search your questions"
                   aria-label="Search your questions"
-                  value={query}
                   onChange={(e) => setQuery(e.target.value)}
                 />
               </label>
-              <div className="fq-tabs" role="tablist">
-                {groups.map((g, gi) => (
+
+              <div className="fq-tabs" role="tablist" aria-label="Question categories">
+                {groups.map((g) => (
                   <button
-                    key={gi}
+                    key={g.id}
                     type="button"
+                    className="fq-tab"
                     role="tab"
-                    aria-selected={!isSearching && activeTab === gi}
-                    className={`fq-tab${!isSearching && activeTab === gi ? ' fq-tab--active' : ''}`}
+                    data-active={!searching && active === g.id}
+                    aria-selected={!searching && active === g.id}
+                    style={{ '--tab-bg': g.bg, '--tab-fg': g.fg }}
                     onClick={() => {
-                      setActiveTab(gi);
                       setQuery('');
+                      setActive(g.id);
                     }}
                   >
-                    {g.pillLabel}<b>{g.items.length}</b>
+                    <span className="fq-tab__dot" />
+                    {g.tab}
                   </button>
                 ))}
               </div>
             </div>
 
-            {!anyResults && (
+            {searching && filtered.length === 0 && (
               <p className="fq-empty">
                 Nothing matches that search. Try a different word, or <a href="/contact">ask us directly</a>.
               </p>
             )}
 
-            {visibleGroups.map((g) => {
-              const gi = g.gi;
-              return (
-              <section key={gi} className="fq-group" id={`fq-g${gi}`}>
-                <header className="fq-group__h">
-                  <span className="fq-group__ic" style={{ background: g.chipBg, color: g.chipColor }}>
-                    <GroupIcon type={g.icon} />
-                  </span>
-                  <div className="fq-group__meta">
-                    <span className="fq-group__part">{g.part}</span>
-                    <h3 className="fq-group__t">{g.title}</h3>
-                  </div>
-                  <span className="fq-group__n">{g.items.length}</span>
-                </header>
-                <div className="fq-list">
-                  {g.items.map((it, i) => {
-                    const key = `${gi}-${i}`;
-                    const open = openKeys.has(key);
-                    const state = open ? 'open' : 'closed';
-                    return (
-                      <div key={i} className="fq-item" data-state={state}>
-                        <button
-                          type="button"
-                          className="fq-q"
-                          aria-expanded={open}
-                          aria-controls={`fq-a-${key}`}
-                          data-state={state}
-                          onClick={() => toggle(key)}
-                        >
-                          <span className="fq-q__t">
-                            {g.numbered && <span className="fq-q__num">{i + 1}.</span>}
-                            {it.q}
-                          </span>
-                          <span className="fq-q__i"><PlusIcon /></span>
-                        </button>
-                        <div className="fq-a" id={`fq-a-${key}`} role="region" data-state={state} hidden={!open}>
-                          <p>{it.a}</p>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </section>
-              );
-            })}
+            {filtered.map((g) => (
+              <Group key={g.id} g={g} searching={searching} />
+            ))}
 
             <div className="fq-help">
               <h3 className="fq-help__t">Still have questions?</h3>

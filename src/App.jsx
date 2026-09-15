@@ -21,6 +21,7 @@ const GetInvolvedPage = lazyRawPage(() => import('./pages/bodies/get_involved.ht
 const ResourcesPage = lazyRawPage(() => import('./pages/bodies/resources.html?raw'));
 const ContactPage = lazyRawPage(() => import('./pages/bodies/contact.html?raw'));
 const TestimonyPage = lazyRawPage(() => import('./pages/bodies/testimony.html?raw'));
+const SitemapPage = lazyRawPage(() => import('./pages/bodies/sitemap.html?raw'));
 const FaqPage = lazy(() => import('./pages/Faq.jsx'));
 const SuccessStoriesPage = lazy(() => import('./pages/SuccessStories.jsx'));
 
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/donate" element={<Donate />} />
           <Route path="/faq" element={<FaqPage />} />
           <Route path="/testimony" element={<TestimonyPage />} />
+          <Route path="/sitemap" element={<SitemapPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </Suspense>
