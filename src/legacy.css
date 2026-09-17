@@ -621,3 +621,66 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .sm-link:hover svg{color:#004AAD}
 .sm-sub{padding-left:18px}
 .sm-sub .sm-link{font-size:13px;color:#6b7280}
+
+/* ============================================================
+   SHARED SECTION HEAD (unified heading style across pages)
+   ============================================================ */
+.sec-head{text-align:center;max-width:720px;margin:0 auto 44px}
+.sec-head__t{font-size:34px;line-height:1.18;font-weight:400;font-family:'DM Serif Display',Georgia,serif;color:#004AAD;margin:0 0 12px;letter-spacing:-.005em}
+@media(min-width:760px){.sec-head__t{font-size:44px}}
+.sec-head__s{font-size:16.5px;line-height:1.75;color:#5b6672;margin:0}
+
+/* ============================================================
+   READ-A-STORY HERO — pill + glass stat strip
+   ============================================================ */
+.ras-hero__pill{display:inline-flex;align-items:center;gap:8px;background:rgba(0,30,70,.62);border:1px solid rgba(254,179,68,.65);color:#FEB344;border-radius:999px;padding:8px 16px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;backdrop-filter:blur(4px)}
+.ras-hero__sub{font-size:18px;line-height:1.65;color:#fff;max-width:46ch;margin:18px auto 0;font-weight:500}
+@media(min-width:760px){.ras-hero__sub{font-size:21px}}
+.ras-hero__strip{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:34px}
+.ras-hero__stat{display:flex;align-items:center;gap:9px;background:rgba(0,30,70,.62);border:1px solid rgba(255,255,255,.26);border-radius:14px;padding:12px 18px;color:#fff;backdrop-filter:blur(6px);line-height:1}
+.ras-hero__stat svg{color:#FEB344;flex:none}
+.ras-hero__stat b{font-size:19px;font-weight:800;letter-spacing:-.01em}
+.ras-hero__stat span{font-size:12.5px;color:#fff;margin-left:4px}
+
+/* ============================================================
+   READ-A-STORY — overlapping photo cluster
+   ============================================================ */
+.ras-cluster{position:relative;min-height:340px}
+.ras-cluster__a,.ras-cluster__b{position:absolute;display:block;border-radius:16px;overflow:hidden;border:5px solid #fff;box-shadow:0 20px 40px -22px rgba(0,74,173,.45)}
+.ras-cluster__a{top:0;left:0;width:68%;aspect-ratio:4/3;transform:rotate(-2.2deg)}
+.ras-cluster__b{bottom:0;right:0;width:54%;aspect-ratio:1/1;transform:rotate(2.6deg)}
+.ras-cluster__a img,.ras-cluster__b img{width:100%;height:100%;object-fit:cover;display:block}
+.ras-cluster__badge{position:absolute;left:0;bottom:34px;display:inline-flex;align-items:center;gap:8px;background:#004AAD;color:#fff;border-radius:999px;padding:11px 18px;font-size:12.5px;font-weight:600;box-shadow:0 14px 30px -14px rgba(0,74,173,.7);z-index:2;line-height:1}
+.ras-cluster__badge svg{color:#FEB344;flex:none}
+.ras-cluster__badge b{font-size:16px;font-weight:800;letter-spacing:-.01em;margin-right:4px}
+@media(max-width:899px){
+  .ras-cluster{min-height:0;display:flex;flex-direction:column;gap:14px}
+  .ras-cluster__a,.ras-cluster__b{position:static;width:100%;transform:none;aspect-ratio:16/10;border-width:4px}
+  .ras-cluster__badge{position:static;align-self:flex-start}
+}
+
+/* ============================================================
+   READ-A-STORY — navy impact band
+   ============================================================ */
+.ras-band{position:relative;padding:60px 0;background:linear-gradient(135deg,#00327A 0%,#004AAD 52%,#0B5BC4 100%);overflow:hidden}
+.ras-band:before{content:"";position:absolute;top:-120px;right:-80px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(254,179,68,.30),transparent 68%)}
+.ras-band__inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:34px;align-items:center}
+@media(min-width:960px){.ras-band__inner{grid-template-columns:.85fr 1.15fr;gap:48px}}
+.ras-band__kicker{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#FEB344;margin-bottom:12px}
+.ras-band__t{font-size:29px;line-height:1.22;font-weight:400;font-family:'DM Serif Display',Georgia,serif;color:#fff;margin:0}
+@media(min-width:760px){.ras-band__t{font-size:36px}}
+.ras-band__figs{display:flex;flex-wrap:wrap;gap:14px}
+.ras-band__fig{flex:1 1 160px;min-width:150px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.22);border-left:3px solid #FEB344;border-radius:14px;padding:20px 18px}
+.ras-band__fig b{display:block;font-size:36px;font-weight:800;color:#fff;line-height:1;letter-spacing:-.025em;margin-bottom:8px}
+.ras-band__fig span{display:block;font-size:12.5px;line-height:1.5;color:rgba(255,255,255,.9)}
+
+/* ============================================================
+   HOME PAGE — OUR IMPACT (4-across row)
+   ============================================================ */
+.im-row{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;max-width:1080px;margin:0 auto}
+.im-card{flex:1 1 220px;min-width:210px;max-width:320px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;background:#fff;border:1px solid rgba(0,74,173,.10);border-radius:16px;padding:24px 22px;box-shadow:0 10px 26px -20px rgba(0,74,173,.26);transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s ease,border-color .22s ease}
+@media(min-width:1000px){.im-row{flex-wrap:nowrap}.im-card{flex:1 1 0;min-width:0;max-width:none}}
+.im-card:hover{transform:translateY(-4px);border-color:rgba(254,179,68,.55);box-shadow:0 22px 40px -22px rgba(0,74,173,.30)}
+.im-card__ic{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;margin-bottom:10px}
+.im-card__n{font-size:32px;font-weight:800;color:#004AAD;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.im-card__l{font-size:13px;line-height:1.55;color:#5b6672;font-weight:500}
