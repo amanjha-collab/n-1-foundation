@@ -113,6 +113,10 @@
             el.setAttribute('data-reveal-init', '1');
             el.classList.add('reveal-on-scroll');
             io.observe(el);
+            setTimeout(function () {
+              el.classList.add('is-visible');
+              io.unobserve(el);
+            }, 1500);
           });
         }
         tagAndObserve();
