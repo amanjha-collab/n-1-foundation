@@ -684,3 +684,18 @@ header.sticky{position:sticky!important;top:0;z-index:99}
 .im-card__ic{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;margin-bottom:10px}
 .im-card__n{font-size:32px;font-weight:800;color:#004AAD;line-height:1;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .im-card__l{font-size:13px;line-height:1.55;color:#5b6672;font-weight:500}
+
+/* ============================================================
+   READ-A-STORY — intro row (cluster + text column)
+   Fixes an overlap bug: the cluster's fixed min-height was
+   calculated assuming ~half-width, not a full-width standalone
+   block, so it needs a real sibling column to size correctly.
+   ============================================================ */
+.ras-intro{display:grid;grid-template-columns:1fr;gap:36px;align-items:center;max-width:1080px;margin:0 auto 56px}
+@media(min-width:900px){.ras-intro{grid-template-columns:1fr 1fr;gap:48px}}
+.ras-intro__text{text-align:center}
+@media(min-width:900px){.ras-intro__text{text-align:left}}
+.ras-intro__t{font-size:24px;line-height:1.3;font-weight:400;font-family:'DM Serif Display',Georgia,serif;color:#004AAD;margin:0 0 14px}
+@media(min-width:760px){.ras-intro__t{font-size:28px}}
+.ras-intro__p{font-size:15.5px;line-height:1.75;color:#5b6672;margin:0;max-width:48ch}
+@media(min-width:900px){.ras-intro__p{margin:0}}
